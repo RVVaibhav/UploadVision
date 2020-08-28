@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Vision;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -71,38 +71,38 @@ class User extends Authenticatable implements JWTSubject
 
     public function userDetails()
     {
-        return $this->hasOne('App\UserDetails', 'user_id');
+        return $this->hasOne('Vision\UserDetails', 'user_id');
     }
 
     public function post()
     {
-        return $this->hasMany('App\Post', 'user_id');
+        return $this->hasMany('Vision\Post', 'user_id');
     }
 
     public function userlastpost()
     {
-        return $this->hasOne('App\Post', 'user_id')->orderBy('id');
+        return $this->hasOne('Vision\Post', 'user_id')->orderBy('id');
     }
 
     public function follow()
     {
-        return $this->belongsToMany(User::class, 'App\Follow', 'user_id', 'follow_user_id');
+        return $this->belongsToMany(User::class, 'Vision\Follow', 'user_id', 'follow_user_id');
     }
 
     function isFollow()
     {
-        return $this->belongsToMany(User::class, 'App\Follow', 'follow_user_id', 'user_id');
+        return $this->belongsToMany(User::class, 'Vision\Follow', 'follow_user_id', 'user_id');
         
     }
 
     public function followCount()
     {
-        return $this->belongsToMany(User::class, 'App\Follow', 'user_id', 'follow_user_id')->count();
+        return $this->belongsToMany(User::class, 'Vision\Follow', 'user_id', 'follow_user_id')->count();
     }
 
     public function userCoin()
     {
-        return $this->hasMany('App\UserCoin', 'user_id')->sum('coins');
+        return $this->hasMany('Vision\UserCoin', 'user_id')->sum('coins');
     }
 
     public static function algorithUser($level_id){

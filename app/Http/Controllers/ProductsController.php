@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Vision\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Auth;
-use App\Coin;
-use App\CallRate;
-use App\ConvertCoin;
-use App\Gift;
-use App\SecretChat;
+use Vision\Coin;
+use Vision\CallRate;
+use Vision\ConvertCoin;
+use Vision\Gift;
+use Vision\SecretChat;
 use Storage;
 use Log;
 

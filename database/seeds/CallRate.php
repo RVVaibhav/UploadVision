@@ -2,8 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class CallRate extends Seeder
-{
+class CallRate extends Seeder{
     /**
      * Run the database seeds.
      *

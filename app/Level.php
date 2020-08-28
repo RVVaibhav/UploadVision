@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Vision;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -8,11 +8,11 @@ class Level extends Model
 {
     public function algorithms()
     {
-        return $this->hasMany('App\Algorithm', 'level_id');
+        return $this->hasMany('Vision\Algorithm', 'level_id');
     }
 
     public function slideuser()
     {
-        return $this->hasMany('App\Slideuser', 'level_id');
+        return $this->hasMany('Vision\Slideuser', 'level_id');
     }
 }

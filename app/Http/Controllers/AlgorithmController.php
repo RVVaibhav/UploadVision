@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Vision\Http\Controllers;
 
-use App\Algorithm;
+use Vision\Algorithm;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
-use App\Level;
-use App\Slideuser;
-use App\User;
+use Vision\Level;
+use Vision\Slideuser;
+use Vision\User;
 use Log;
 
 class AlgorithmController extends Controller
@@ -59,7 +59,7 @@ class AlgorithmController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Algorithm  $algorithm
+     * @param  \Vision\Algorithm  $algorithm
      * @return \Illuminate\Http\Response
      */
     public function show(Algorithm $algorithm)
@@ -70,7 +70,7 @@ class AlgorithmController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Algorithm  $algorithm
+     * @param  \Vision\Algorithm  $algorithm
      * @return \Illuminate\Http\Response
      */
     public function edit(Algorithm $algorithm)
@@ -82,7 +82,7 @@ class AlgorithmController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Algorithm  $algorithm
+     * @param  \Vision\Algorithm  $algorithm
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Algorithm $algorithm)
@@ -93,7 +93,7 @@ class AlgorithmController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Algorithm  $algorithm
+     * @param  \Vision\Algorithm  $algorithm
      * @return \Illuminate\Http\Response
      */
     public function destroy($level_id)

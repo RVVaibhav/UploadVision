@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Vision\Http\Controllers;
 
-use App\User;
-use App\Http\Requests\UserRequest;
+use Vision\User;
+use Vision\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
@@ -12,10 +12,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
-use App\UserDetails;
-use App\UserCoin;
-use App\Level;
-use App\Algorithm;
+use Vision\UserDetails;
+use Vision\UserCoin;
+use Vision\Level;
+use Vision\Algorithm;
 use Storage;
 use Log;
 
@@ -24,7 +24,7 @@ class UserController extends Controller
     /**
      * Display a listing of the users
      *
-     * @param  \App\User  $model
+     * @param  \Vision\User  $model
      * @return \Illuminate\View\View
      */
     public function index(User $model)

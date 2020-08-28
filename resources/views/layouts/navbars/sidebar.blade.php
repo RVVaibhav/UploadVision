@@ -59,13 +59,13 @@
       <li class = " @if ($activePage == 'userposts') active @endif">
         <a href="{{ url('/userposts') }}">
           <i class="now-ui-icons design_bullet-list-67"></i>
-          <p>{{ __('Post') }}</p>
+          <p>{{ __('Test') }}</p>
         </a>
       </li>
       <li class = "@if ($activePage == 'products') active @endif">
         <a href="{{ url('/products') }}">
           <i class="now-ui-icons shopping_box"></i>
-          <p>{{ __('Product') }}</p>
+          <p>{{ __('Results') }}</p>
         </a>
       </li>
       <li class = "@if ($activePage == 'typography') active @endif">

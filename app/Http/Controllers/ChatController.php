@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Vision\Http\Controllers;
 
-use App\Post;
-use App\User;
+use Vision\Post;
+use Vision\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Auth;
