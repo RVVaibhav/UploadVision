@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
@@ -13,9 +14,9 @@ class CreateHeaderOne extends Migration
     public function up()
     {
         Schema::create('test_header_1', function (Blueprint $table) {
-            $table->increments('test_header_1 _id');
-            $table->string('header_1');
-            $table->timestamps();
+          $table->increments('test_header_1_id');
+          $table->string('header_1');
+          $table->timestamps();
         });
     }
 
@@ -26,6 +27,6 @@ class CreateHeaderOne extends Migration
      */
     public function down()
     {
-        Schema::drop('test_header_1');
+        Schema::dropIfExists('test_header_1');
     }
 }

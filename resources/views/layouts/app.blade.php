@@ -49,10 +49,12 @@
   <!-- <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" /> -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <!-- CSS Files -->
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
   <link href="/css/bootstrap.min.css" rel="stylesheet" />
   <link href="/css/now-ui-dashboard.css?v=1.3.0" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="/demo/demo.css" rel="stylesheet" />
+
   <!-- Google Tag Manager -->
   <!-- End Google Tag Manager -->
   <script>
@@ -82,6 +84,18 @@
       console.log('Facebook Track Error:', err);
     }
   </script>
+  <script src="https://cdn.ckeditor.com/ckeditor5/22.0.0/classic/ckeditor.js"></script>
+    <script>
+      ClassicEditor
+        .create(document.querySelector('#editor'))
+        .then(editor => {
+          console.log(editor);
+        })
+        .catch(error => {
+          console.error(error);
+        });
+
+    </script>
 </head>
 
 <body class="{{ $class ?? '' }}">
@@ -105,6 +119,68 @@
   <script src="/js/core/popper.min.js"></script>
   <script src="/js/core/bootstrap.min.js"></script>
   <script src="/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+
+  <!-- include summernote css/js -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+
+<script>
+ $(document).ready(function() {
+  $('.summernote').summernote();
+});
+
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('select[name="country_id"]').on('change', function() {
+            var stateID = $(this).val();
+            if(stateID) {
+                $.ajax({
+                    url: '/myform/ajax/'+stateID,
+                    type: "GET",
+                    dataType: "json",
+                    success:function(data) {
+                        $('select[name="city"]').empty();
+                        $.each(data, function(key, value) {
+                            $('select[name="city"]').append('<option value="'+ value.test_header_2_id +'">'+ value.test_header_2 +'</option>');
+                        });
+
+
+                    }
+                });
+            }else{
+                $('select[name="city"]').empty();
+            }
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('select[name="city"]').on('change', function() {
+            var stateID = $(this).val();
+            if(stateID) {
+                $.ajax({
+                    url: '/myform/ajaxs/'+stateID,
+                    type: "GET",
+                    dataType: "json",
+                    success:function(data) {
+                        $('select[name="setting"]').empty();
+                        $.each(data, function(key, value) {
+                            $('select[name="setting"]').append('<option value="'+ value.test_header_3_id +'">'+ value.test_header_3 +'</option>');
+                        });
+
+
+                    }
+                });
+            }else{
+                $('select[name="setting"]').empty();
+            }
+        });
+    });
+</script>
+
   <!--  Google Maps Plugin    -->
   <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
   <!-- Chart JS -->
@@ -116,6 +192,8 @@
   <!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
   <script src="/demo/demo.js"></script>
   @stack('js')
+
+
 </body>
 
 </html>

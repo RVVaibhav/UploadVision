@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Carbon\Carbon;
 
-class headers extends Seeder
+class Headers extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,7 +12,7 @@ class headers extends Seeder
      */
     public function run()
     {
-        DB::table('test_header_1')->truncate();
+      DB::table('test_header_1')->truncate();
         DB::table('test_header_1')->insert([[
             'header_1' => 'ALL',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),

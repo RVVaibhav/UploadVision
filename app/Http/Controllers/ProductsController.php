@@ -113,12 +113,11 @@ class ProductsController extends Controller
         $gift->gift_name = $request->input('gift_name');
         $gift->gift_coin = $request->input('gift_coin');
         $gift->save();
-          
+
         return redirect('/products/gift');
     }
 
-    public function editGift(Request $request, $id)
-    {
+    public function editGift(Request $request, $id)  {
         $validatedData = $request->validate([
             'gift_name' => 'required',
             'gift_coin' => 'required',
@@ -132,7 +131,7 @@ class ProductsController extends Controller
         $gift->gift_name = $request->input('gift_name');
         $gift->gift_coin = $request->input('gift_coin');
         $gift->save();
-          
+
         return redirect('/products/gift');
     }
 
@@ -153,7 +152,7 @@ class ProductsController extends Controller
         $coin = Coin::all();
         return response()->json($coin);
     }
-    
+
 
     public function editcoinCenter(Request $request, $id)
     {
@@ -165,10 +164,10 @@ class ProductsController extends Controller
         $coin->coin_rs = $request->input('coin_rs');
         $coin->coins = $request->input('coins');
         $coin->save();
-          
+
         return redirect('/products/coin-center');
     }
-    
+
     public function secretChat()
     {
         $secretChat = SecretChat::all();
@@ -184,7 +183,7 @@ class ProductsController extends Controller
         $coin->secret_chat_min = $request->input('secret_chat_min');
         $coin->secret_chat_coin = $request->input('secret_chat_coin');
         $coin->save();
-          
+
         return redirect('/products/secret-chat');
     }
 
@@ -203,7 +202,7 @@ class ProductsController extends Controller
         $coin->convert_coin_rs = $request->input('convert_coin_rs');
         $coin->convert_coin = $request->input('convert_coin');
         $coin->save();
-          
+
         return redirect('/products/coin-center');
     }
     public function callRate()
@@ -219,8 +218,8 @@ class ProductsController extends Controller
         $coin = CallRate::findOrFail($id);
         $coin->coin_per_sec = $request->input('coin_per_sec');
         $coin->save();
-          
+
         return redirect('/products/call-rate');
     }
-   
+
 }

@@ -3,9 +3,14 @@
 namespace Vision;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
 class Questions extends Model
 {
+
+  use Notifiable;
+  protected $table = 'question_bank';
+  protected $primaryKey = 'question_id';
   protected $fillable = [
 
 
@@ -22,4 +27,8 @@ class Questions extends Model
 	'admin_id'
 
 ];
+
+public function user(){
+    return $this->belongsTo('Vision\User', 'user_id');
+}
 }

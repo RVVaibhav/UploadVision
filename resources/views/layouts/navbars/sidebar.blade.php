@@ -50,28 +50,46 @@
           <p>{{ __('Users') }}</p>
         </a>
       </li>
-      <li class = " @if ($activePage == 'chat') active @endif">
-        <a href="{{ url('/chat') }}">
+      <li class = " @if ($activePage == 'headers') active @endif">
+        <a href="{{ url('/headers') }}">
           <i class="now-ui-icons ui-2_chat-round"></i>
           <p>{{ __('Headers') }}</p>
         </a>
       </li>
-      <li class = " @if ($activePage == 'userposts') active @endif">
-        <a href="{{ url('/userposts') }}">
+      <li class = " @if ($activePage == 'test') active @endif">
+        <a href="{{ url('/test') }}">
           <i class="now-ui-icons design_bullet-list-67"></i>
           <p>{{ __('Test') }}</p>
         </a>
       </li>
-      <li class = "@if ($activePage == 'products') active @endif">
-        <a href="{{ url('/products') }}">
+      <li class = "@if ($activePage == 'quiz') active @endif">
+        <a href="{{ url('/quiz') }}">
           <i class="now-ui-icons shopping_box"></i>
-          <p>{{ __('Results') }}</p>
+          <p>{{ __('Question') }}</p>
         </a>
       </li>
-      <li class = "@if ($activePage == 'typography') active @endif">
-        <a href="">
+      <li class = "@if ($activePage == 'testQuiz') active @endif">
+        <a href="{{ url('/testQuiz') }}">
+          <i class="now-ui-icons shopping_box"></i>
+          <p>{{ __('Test Question') }}</p>
+        </a>
+      </li>
+      <li class = "@if ($activePage == 'result') active @endif">
+        <a href="{{ url('/result') }}">
           <i class="now-ui-icons text_caps-small"></i>
-          <p>{{ __('Finance') }}</p>
+          <p>{{ __('Result') }}</p>
+        </a>
+      </li>
+      <li class = "@if ($activePage == 'subscribe') active @endif">
+        <a href="{{ url('/subscribe') }}">
+          <i class="now-ui-icons text_caps-small"></i>
+          <p>{{ __('Subscribe') }}</p>
+        </a>
+      </li>
+      <li class = "@if ($activePage == 'vedio') active @endif">
+        <a href="{{ url('/vedio') }}">
+          <i class="now-ui-icons text_caps-small"></i>
+          <p>{{ __('Vedio') }}</p>
         </a>
       </li>
       <li class = "@if ($activePage == 'typography') active @endif">

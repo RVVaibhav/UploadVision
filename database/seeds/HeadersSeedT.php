@@ -284,7 +284,7 @@ class HeadersSeedT extends Seeder
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
       ],[
-          'test_header_1_id' => '6',
+           'test_header_1_id' => '6',
             'test_header_2_id'=> '9',
             'test_header_3'=> 'Physiology',//Kashyap
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
@@ -293,6 +293,18 @@ class HeadersSeedT extends Seeder
           'test_header_1_id' => '6',
             'test_header_2_id'=> '10',
             'test_header_3'=> 'Pharmacology',
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+      ],[
+           'test_header_1_id' => '6',
+            'test_header_2_id'=> '10',
+            'test_header_3'=> 'Toxicology',
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+      ],[
+           'test_header_1_id' => '6',
+            'test_header_2_id'=> '10',
+            'test_header_3'=> 'Forensic Medicine',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
       ],[
