@@ -57,7 +57,7 @@
                                        </div>
                                     </td>
                                        <td>
-                                         {!!Form::open(['action' => ['TestQuestionController@destroy',$items->test_id,$post->question_id], 'method' => 'POST', 'class' => 'pull-right'])!!}
+                                         {!!Form::open(['action' => ['TestQuestionController@destroy',$items,$post->question_id], 'method' => 'POST', 'class' => 'pull-right'])!!}
                                           {!!Form::hidden('_method', 'DELETE')!!}
                                          {!!Form::submit('Delete', ['class' => 'btn btn-danger'])!!}
                                          {!!Form::close()!!}
