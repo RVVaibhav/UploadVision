@@ -158,6 +158,31 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
+        $('select[name="state_type"]').on('change', function() {
+            var stateID = $(this).val();
+            if(stateID) {
+                $.ajax({
+                    url: '/myform/ajax_state/'+stateID,
+                    type: "GET",
+                    dataType: "json",
+                    success:function(data) {
+                        $('select[name="city"]').empty();
+                        $.each(data, function(key, value) {
+                            $('select[name="city"]').append('<option value="'+ value.id +'">'+ value.city_name +'</option>');
+                        });
+
+
+                    }
+                });
+            }else{
+                $('select[name="city"]').empty();
+            }
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
         $('select[name="city"]').on('change', function() {
             var stateID = $(this).val();
             if(stateID) {
@@ -180,6 +205,7 @@
         });
     });
 </script>
+
 
   <!--  Google Maps Plugin    -->
   <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>

@@ -18,7 +18,7 @@ class User extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $fillable = [
-        'name', 'gender','mobile','role',',password',
+        'name', 'gender','mobile','role','password'
     ];
 
     /**
@@ -92,7 +92,7 @@ class User extends Authenticatable implements JWTSubject
     function isFollow()
     {
         return $this->belongsToMany(User::class, 'Vision\Follow', 'follow_user_id', 'user_id');
-        
+
     }
 
     public function followCount()

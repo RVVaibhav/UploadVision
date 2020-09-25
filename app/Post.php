@@ -8,17 +8,16 @@ use Illuminate\Notifications\Notifiable;
 class Post extends Model{
 
   use Notifiable;
-  protected $table = 'vedioAdd';
+  protected $table = 'video_tutorials';
   protected $primaryKey = 'id';
 
   protected $fillable = [
-
-   'title','vedio','visibleDate','endDate','user_id','thumbimage'
+   'title','vedio','start_date','expire_date','admin_id','thumbimage','video_cat'
 
 ];
 
-    public function user()
+    public function video()
     {
-        return $this->belongsTo('Vision\User', 'user_id');
+        return $this->belongsTo('Vision\VideoCategory', 'id');
     }
 }

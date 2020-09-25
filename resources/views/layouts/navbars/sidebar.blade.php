@@ -74,10 +74,23 @@
           <p>{{ __('Test Question') }}</p>
         </a>
       </li>
+      <li class = "@if ($activePage == 'category') active @endif">
+        <a href="{{ url('/category') }}">
+          <i class="now-ui-icons shopping_box"></i>
+          <p>{{ __('Categories') }}</p>
+        </a>
+      </li>
+
       <li class = "@if ($activePage == 'result') active @endif">
         <a href="{{ url('/result') }}">
           <i class="now-ui-icons text_caps-small"></i>
           <p>{{ __('Result') }}</p>
+        </a>
+      </li>
+      <li class = "@if ($activePage == 'datauploads') active @endif">
+        <a href="{{ url('/datauploads') }}">
+          <i class="now-ui-icons text_caps-small"></i>
+          <p>{{ __('Uploads') }}</p>
         </a>
       </li>
       <li class = "@if ($activePage == 'subscribe') active @endif">

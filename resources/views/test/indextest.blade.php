@@ -32,14 +32,14 @@
                        <div class="form-group">
                           {!! Form::label('startdate', 'Start Date (Quiz can be attempted after this date. YYYY-MM-DD HH:ll:SS):', ['class' => 'col-lg-8 control-label'])!!}
                            <div class="col-lg-12">
-                             <input type="datetime-local" id="birthdaytime" name="startdate" class= "form-control">
+                             <input type="enddate" id="birthdaytime" name="startdate" class= "form-control">
 
                            </div>
                        </div>
                        <div class="form-group">
                           {!! Form::label('enddate', 'End Date (Quiz can be attempted after this date. YYYY-MM-DD HH:ll:SS):', ['class' => 'col-lg-8 control-label'])!!}
                            <div class="col-lg-12">
-                            <input type="datetime-local" id="birthdaytime" name="enddate" class= "form-control">
+                            <input type="enddate" id="birthdaytime" name="enddate" class= "form-control">
                            </div>
                        </div>
                        <div class="form-group">
@@ -99,6 +99,30 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="form-group">
+                             {!! Form::label('radios', 'Test Group', ['class' => 'col-lg-8 control-label']) !!}
+                             <div class="col-lg-12">
+                                 <div class="radio-inline">
+                                 <input type="radio" id="administrator" name="radios" value="Free"> Free
+                                  <input type="radio" id="moderator" name="radios" value="Paid"> Paid
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="form-group">
+                            {!! Form::label('category', 'Test Category', ['class' => 'col-lg-8 control-label'])!!}
+                             <div class="col-lg-12">
+                               <select name="category" id="category" class="form-control">
+                                  @foreach($category as $id => $cat)
+                                      <option value="{{ $id }}">
+                                          {{ $cat }}
+                                      </option>
+                                  @endforeach
+                              </select>
+                               @if($errors->has('test_header_1_id'))
+                               <span class="help-block text-danger">{{$errors->first('test_header_1_id')}}</span>
+                               @endif
+                             </div>
+                         </div>
                        <div class="form-group">
                           {!! Form::label('headers', 'Headers One:', ['class' => 'col-lg-8 control-label'])!!}
                            <div class="col-lg-12">
@@ -114,6 +138,7 @@
                              @endif
                            </div>
                        </div>
+
                        <div class="form-group">
                           {!! Form::label('headers', 'Headers Two:', ['class' => 'col-lg-8 control-label'])!!}
                            <div class="col-lg-12">

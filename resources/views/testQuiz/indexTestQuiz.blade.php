@@ -2,48 +2,33 @@
 'namePage' => 'Create Questions Set',
 'class' => 'login-page sidebar-mini ',
 'activePage' => 'testQuiz',
-'backgroundImage' => asset('now') . "/img/bg14.jpg",
+'backgroundImage' => asset('now')."/img/bg14.jpg",
 ])
 @section('content')
 <div class="panel-header">
 </div>
 <div class="content">
-    <div class="row">
+
+    <div class="row" style="margin-top:20px;">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
+                    <div class="container border">
                     <div class="places-buttons">
                        {{csrf_field()}}
-                         <div class="row">
-                             <div class="form-group">
-                              {!! Form::label('text', 'Select Test:', ['class' => 'col-lg-8 control-label'])!!}
-                              <div class="col-lg-12">
-                                <select placeholder="Filter" class="form-control" name="question_type" style="height:40px">
-                                  @foreach($items as $id => $country)
-                                      <option value="{{ $id }}">
-                                          {{ $country }}
-                                      </option>
-                                  @endforeach
-                                </select>
-                                @if($errors->has('test_id'))
-                                 <span class="help-block text-danger">{{$errors->first('test_id')}}</span>
-                                 @endif
-                              </div>
-                           </div>
-                        </div>
-                           @if(count(is_countable($posts)?$posts:[]) > 0)
+                       @if(count($posts) > 0)
                            <table class="table table-striped">
                                   <thead>
                                   <tr>
                                      <th>#</th>
                                      <th>Questions</th>
                                      <th>Question type</th>
-                                     <th>% Correct</th>
                                      <th>Action</th>
                                   </tr>
                                   </thead>
                                   <tbody>
                                      @foreach($posts as $post)
+                                      {{csrf_field()}}
                                      <tr>
                                        <td>{{$post->question_id}}</td>
                                        <td>{{$post->question}}</td>
@@ -51,35 +36,75 @@
                                          {{$post->question_type}}
                                       </td>
                                        <td>
-                                         <div class="progress">
-                                         <div class="progress-bar bg-success" role="progressbar" style="width: 25%;"
-                                             aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                                         <div class="col-auto">
+                                           <a class="btn btn-info" href="{{ url('/testQues'.$post->question_id) }}" data-hover="tooltip" data-placement="top"
+                                               data-target="#addnewgift{{$post->question_id}}" data-toggle="modal" id="modal-edit" title="Edit"><i
+                                                   class="fa fa-fw fa-edit"></i></a>
+                                                   {!!Form::open(['action' => ['TestQuestionController@destroy', $post->question_id], 'method' => 'POST', 'class' => 'pull-right'])!!}
+                                                    {!!Form::hidden('_method', 'DELETE')!!}
+                                                   {!!Form::submit('DELETE QUESTION', ['class' => 'btn btn-danger'])!!}
+                                                   {!!Form::close()!!}
+
+                                          @csrf
+                                        </form>
                                        </div>
-                                    </td>
-                                       <td>
-                                         {!!Form::open(['action' => ['TestQuestionController@destroy',$items,$post->question_id], 'method' => 'POST', 'class' => 'pull-right'])!!}
-                                          {!!Form::hidden('_method', 'DELETE')!!}
-                                         {!!Form::submit('Delete', ['class' => 'btn btn-danger'])!!}
-                                         {!!Form::close()!!}
                                      </td>
                                      </tr>
+                                     <div class="modal fade" id="addnewgift{{$post->question_id}}">
+                                         <div class="modal-dialog modal-col-md-6">
+                                             <div class="modal-content">
+                                                 <div class="modal-header">
+                                                     <h5 class="modal-title">Assign Question To Test</h5>
+                                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                 </div>
+                                                 <div class="modal-body">
+                                                       {!! Form::open(['action' => ['TestQuestionController@update', $post->question_id], 'method' => 'POST']) !!}
+                                                         <div class="card-body">
+                                                             {{ csrf_field() }}
+                                                         <div class="form-group">
+                                                             {!! Form::label('text', 'Select Test:', ['class' => 'col-lg-12 control-label'])!!}
+                                                             <div class="col-lg-12">
+                                                               <select placeholder="Filter" class="form-control" id="test_type" name="test_type">
+                                                                 @foreach($items as $id => $country)
+                                                                     <option value="{{ $id }}">
+                                                                         {{ $country }}
+                                                                     </option>
+                                                                 @endforeach
+                                                               </select>
+                                                                @if($errors->has('test_id'))
+                                                                <span class="help-block text-danger">{{$errors->first('test_id')}}</span>
+                                                                @endif
+                                                             </div>
+                                                          </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                           <div class="col-lg-8">
+                                                             {!!Form::hidden('_method','PUT')!!}
+                                                             {!!Form::submit('Assign', ['class'=>'btn btn-primary'])!!}
+                                                             @csrf
+                                                         </div>
+                                                         </div>
+                                                      </div>
+                                                 </div>
+                                                 </form>
+                                             </div>
+                                         </div>
+                                     </div>
                                      @endforeach
                                      {{$posts->links()}}
                                      @else
                                          <p>No posts found</p>
                                      @endif
                                   </tbody>
-
                                </table>
 
-
-
-
                   </div>
+
                </div>
             </div>
          </div>
       </div>
+  </div>
 </div>
 
 

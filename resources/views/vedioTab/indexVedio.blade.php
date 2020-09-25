@@ -19,18 +19,32 @@
                         <div class="form-group">
                            {!! Form::label('text', 'Title:', ['class' => 'col-lg-12 control-label'])!!}
                            <div class="col-lg-12">
-
-                               {!! Form::text('vedioTitle', '', ['class' => 'form-control', 'placeholder' => 'Quiz Name']) !!}
+                               {!! Form::text('vedioTitle', '', ['class' => 'form-control', 'placeholder' => 'Name']) !!}
                            </div>
                        </div>
                        <div class="form-row">
-
-                           <div class="col-6">
+                           <div class="col-12">
                                 {!! Form::label('text', 'Vedio:', ['class' => 'col-lg-12 control-label'])!!}
                           <div class="col-xs-3 col-lg-12">
-                          {!!Form::file('image')!!}
+                           <input type="file" name="image" class="form-control">
+                            {!! $errors->first('image', '<p class="alert alert-danger">:message</p>') !!}
                           </div>
                             </div>
+                      </div>
+                      <div class="form-group">
+                         {!! Form::label('category', 'Video Category', ['class' => 'col-lg-8 control-label'])!!}
+                          <div class="col-lg-12">
+                            <select name="category" id="category" class="form-control">
+                               @foreach($category as $id => $cat)
+                                   <option value="{{ $id }}">
+                                       {{ $cat }}
+                                   </option>
+                               @endforeach
+                           </select>
+                            @if($errors->has('test_header_1_id'))
+                            <span class="help-block text-danger">{{$errors->first('test_header_1_id')}}</span>
+                            @endif
+                          </div>
                       </div>
                        <div class="form-group">
                           {!! Form::label('startdate', 'Start Date (Video Visibility Start Date. YYYY-MM-DD HH:ll:SS):', ['class' => 'col-lg-12 control-label'])!!}

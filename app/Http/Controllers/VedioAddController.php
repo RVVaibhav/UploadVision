@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Vision\Post;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\DB;
 class VedioAddController extends Controller
 {
     /**
@@ -20,11 +21,11 @@ class VedioAddController extends Controller
     }
 
     public function index(){
+       $category = DB::table('video_category')->pluck('video_cat','id');
        $posts = Post::orderBy('created_at','desc')->paginate(10);
   //    Country::all()->pluck('name', 'id')
-       return view('vedioTab.indexVedio',compact('posts'));
+       return view('vedioTab.indexVedio',compact('posts','category'));
    }
-
 
    public function store(Request $request){
        $this->validate($request, [
@@ -54,13 +55,12 @@ class VedioAddController extends Controller
          } else {
              $fileNameToStore = 'noimage.jpg';
          }
-
-       // Create Post
        $post = new Post;
        $post->title = $request->input('vedioTitle');
-       $post->visibleDate = $request->input('startdate');
-       $post->endDate = $request->input('enddate');
-       $post->user_id = auth()->user()->id;
+       $post->start_date = $request->input('startdate');
+       $post->expire_date = $request->input('enddate');
+       $post->video_cat = $request->input('category');
+       $post->admin_id = auth()->user()->id;
        $post->vedio = $fileNameToStore;
        $post->thumbimage = $fileNameToStore;
        $post->save();

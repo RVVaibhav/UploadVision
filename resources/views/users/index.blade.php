@@ -9,151 +9,215 @@
 <div class="panel-header">
 </div>
 <div class="content">
-    <!-- <div class="row">
-      <div class="col-md-12">
-        <div class="card">
-          <div class="card-header">
-              <a class="btn btn-primary btn-round text-white pull-right" href="#">Add user</a>
-            <h4 class="card-title">Users</h4>
-            <div class="col-12 mt-2">
-                                        </div>
-          </div>
-          <div class="card-body">
-            <div class="toolbar">
-            </div>
-            <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
-              <thead>
-                <tr>
-                  <th>Profile</th>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Creation date</th>
-                  <th class="disabled-sorting text-right">Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                    <td>
-                      <span class="avatar avatar-sm rounded-circle">
-                        <img src="https://now-ui-dashboard-laravel.creative-tim.com/assets/img/default-avatar.png" alt="" style="max-width: 80px; border-radiu: 100px">
-                      </span>
-                    </td>
-                    <td>Admin</td>
-                    <td>admin@nowui.com</td>
-                    <td>25/02/2020 10:14</td>
-                      <td class="text-right">
-                                             <a type="button" href="#" rel="tooltip" class="btn btn-success btn-icon btn-sm " data-original-title="" title="">
-                        <i class="now-ui-icons ui-2_settings-90"></i>
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <span class="avatar avatar-sm rounded-circle">
-                        <img src="https://now-ui-dashboard-laravel.creative-tim.com/assets/img/default-avatar.png" alt="" style="max-width: 80px; border-radiu: 100px">
-                      </span>
-                    </td>
-                    <td>Admin</td>
-                    <td>admin@nowui.com</td>
-                    <td>25/02/2020 10:14</td>
-                      <td class="text-right">
-                                             <a type="button" href="#" rel="tooltip" class="btn btn-success btn-icon btn-sm " data-original-title="" title="">
-                        <i class="now-ui-icons ui-2_settings-90"></i>
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <span class="avatar avatar-sm rounded-circle">
-                        <img src="https://now-ui-dashboard-laravel.creative-tim.com/assets/img/default-avatar.png" alt="" style="max-width: 80px; border-radiu: 100px">
-                      </span>
-                    </td>
-                    <td>Admin</td>
-                    <td>admin@nowui.com</td>
-                    <td>25/02/2020 10:14</td>
-                      <td class="text-right">
-                                             <a type="button" href="#" rel="tooltip" class="btn btn-success btn-icon btn-sm " data-original-title="" title="">
-                        <i class="now-ui-icons ui-2_settings-90"></i>
-                      </a>
-                    </td>
-                  </tr>
-                </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div> -->
     <div class="row">
         <div class="col-md-12">
             <div class="card">
+              <form method="POST" action="{{ route('stores') }}" enctype="multipart/form-data">
                 <div class="card-header">
-                    <table width="100%">
-                        <tr>
-                            <td><input type="text" class="form-control pull-left" style="height:40px;width: 300px;"
-                                    placeholder="Search" /></td>
-                            <td class="text-center">
-                                <select placeholder="Filter" class="form-control" style="height:40px">
-                                    <option>Bot All Level</option>
-                                    <option>Bot Level 1</option>
-                                    <option>Bot Level 2</option>
-                                    <option>Bot Level 3</option>
-                                    <option>Verified</option>
-                                    <option>Primary Accs</option>
-                                    <option>Male</option>
-                                    <option>Female</option>
-                                    <option>Video Call enabled</option>
-                                    <option>Audio Call ebabled</option>
-                                </select>
-                            </td>
-                            <td><a class="btn btn-primary btn-round text-white pull-right"
-                                    href="{{route('users.create')}}">Create New User</a></td>
-                        </tr>
-                    </table>
+                    <h4>Create User</h4>
                 </div>
+                <div class="card-body">
+                        <div class="row">
+                            {{ csrf_field() }}
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Name <span style="color: red">*</span></label>
+                                    <input type="text" name="name" value=""
+                                        class="form-control" required
+                                        placeholder="">
+                                </div>
+                                <div class="form-group">
+                                    <label>Mobile <span style="color: red">*</span></label>
+                                    <input type="text" name="mobile" value=""
+                                        class="form-control" required
+                                        placeholder="">
+
+                                </div>
+                                <div class="form-group">
+                                    <label>Email <span style="color: red">*</span></label>
+                                    <input type="text" name="email" value=""
+                                        class="form-control" required
+                                        placeholder="">
+
+                                </div>
+                                <div class="form-group">
+                                    <label>Password <span style="color: red">*</span></label>
+                                    <input type="text" name="password" value=""
+                                        class="form-control" required
+                                        placeholder="">
+
+                                </div>
+                                <div class="form-group">
+                                    <label>UG Collage<span style="color: red">*</span></label>
+                                    <input type="text" name="ugcollage" value=""
+                                        class="form-control" required
+                                        placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>State</label>
+                                    <select placeholder="Filter" class="form-control" id="state_type" name="state_type">
+                                      @foreach($state as $id => $country)
+                                          <option value="{{ $id }}">
+                                              {{ $country }}
+                                          </option>
+                                      @endforeach
+                                    </select>
+                                     @if($errors->has('id'))
+                                     <span class="help-block text-danger">{{$errors->first('id')}}</span>
+                                     @endif
+                                </div>
+                                    <div class="form-group">
+                                        <label>City</label>
+                                        <select name="city" id="city" class="form-control">
+                                       </select>
+                                        @if($errors->has('id'))
+                                        <span class="help-block text-danger">{{$errors->first('id')}}</span>
+                                        @endif
+                                    </div>
+
+                        </div>
+                </div>
+                <div class="card-footer pull-right">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa fa-dot-circle-o"></i> Create Now
+                    </button>
+                </div>
+              </form>
+              @if(count($users) > 0)
+              <table class="table table-striped">
+                     <thead>
+                       <tr>
+                          <th>Sr No</th>
+                          <th>Student Name</th>
+                          <th>Student Email</th>
+                          <th>Action</th>
+                       </tr>
+                     </thead>
+                     <tbody>
+                        @foreach($users as $post)
+                        <tr>
+                          <td>{{$post->user_id}}</td>
+                          <td>{{$post->user_name}}</td>
+                          <td>{{$post->user_email}}</td>
+                          <td>
+                              <div class="col-auto"><a class="btn btn-info" data-hover="tooltip" data-placement="top"
+                                    data-target="#addnewgift{{$post->user_id}}" data-toggle="modal" id="modal-edit" title="Edit"><i
+                                        class="fa fa-fw fa-edit"></i></a>
+                                        {!!Form::open(['action' => ['UserController@destroy', $post->user_id], 'method' => 'POST', 'class' => 'pull-right'])!!}
+                                         {!!Form::hidden('_method', 'DELETE')!!}
+                                        {!!Form::submit('Delete', ['class' => 'btn btn-danger'])!!}
+                                        {!!Form::close()!!}
+                               @csrf
+                            </div>
+                          </td>
+                        </tr>
+                        <div class="modal fade" id="addnewgift{{$post->user_id}}" tabindex="-1" role="dialog" aria-labelledby="editTitle" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Edit Student</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                <!-- add here -->
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="row">
+                                          <form method="POST" action="{{ url('/edit/'.$post->user_id) }}" enctype="multipart/form-data">
+                                        </div>
+                                        <div class="row">
+                                            {{ csrf_field() }}
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Name <span style="color: red">*</span></label>
+                                                    <input type="text" name="name" value="{{$post->user_name}}"
+                                                        class="form-control" required
+                                                        placeholder="">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Mobile <span style="color: red">*</span></label>
+                                                    <input type="text" name="mobile" value="{{$post->user_mobile}}"
+                                                        class="form-control" required
+                                                        placeholder="">
+
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Email <span style="color: red">*</span></label>
+                                                    <input type="text" name="email" value="{{$post->user_email}}"
+                                                        class="form-control" required
+                                                        placeholder="">
+
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Password <span style="color: red">*</span></label>
+                                                    <input type="text" name="password" value="{{$post->user_password}}"
+                                                        class="form-control" required
+                                                        placeholder="">
+
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>UG Collage<span style="color: red">*</span></label>
+                                                    <input type="text" name="ugcollage" value="{{$post->ug_college}}"
+                                                        class="form-control" required
+                                                        placeholder="">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>State</label>
+                                                    <select placeholder="Filter" class="form-control" id="state_type" name="state_type">
+                                                      @foreach($state as $id => $country)
+                                                          <option value="{{ $id }}">
+                                                              {{ $country }}
+                                                          </option>
+                                                      @endforeach
+                                                    </select>
+                                                     @if($errors->has('id'))
+                                                     <span class="help-block text-danger">{{$errors->first('id')}}</span>
+                                                     @endif
+                                                </div>
+                                                    <div class="form-group">
+                                                        <label>City</label>
+                                                        <select name="city" id="city" class="form-control">
+                                                       </select>
+                                                        @if($errors->has('id'))
+                                                        <span class="help-block text-danger">{{$errors->first('id')}}</span>
+                                                        @endif
+                                                    </div>
+                                        </div>
+                                    </div>
+                                  </div>
+
+
+
+                                </div>
+                                <!-- End Herre -->
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                {!!Form::hidden('_method','PUT')!!}
+                               {!!Form::submit('Edit', ['class'=>'btn btn-primary'])!!}
+                                @csrf
+                              </div>
+                              {!! Form::close() !!}
+                            </div>
+                          </div>
+                        </div>
+
+                        @endforeach
+                        {{$users->links()}}
+                        @else
+                            <p>No posts found</p>
+                        @endif
+                     </tbody>
+
+                  </table>
             </div>
-        </div>
-        @if(count($users) > 0)
-        @foreach ($users as $user)
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-body ">
-                    <table>
-                        <tr>
-                            <td rowspan=3>
-                            @if($user->userDetails['profile_pic'])
-                                <img class="img-circle" src="{{ Storage::url($user->userDetails['profile_pic'])}}"
-                                    style="border-radius: 50%;width: 50px;height: 50px;">
-                            @else
-                                <img class="img-circle" src="/img/default-avatar.png"
-                                    style="border-radius: 50%;width: 50px;height: 50px;">
-                            @endif
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><span style="font-size:20px">{{$user->name}}</span></td>
-                        </tr>
-                        <tr>
-                            <td>150K Followers</td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="card-footer ">
-                    <div class="stats">
-                        {{$user->userDetails['bot'] ? 'Bot' : ''}} | 150 Voice | Video Call | Level
-                        {{$user->userDetails['level_id']}} | {{$user->userDetails['status']}} |
-                        <a class="btn btn-link" href="/users/{{$user->id}}" ><i class="fa fa-fw fa-edit"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        @endforeach
-        @endif
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">
-                    {{$users->render()}}
-                </div>
-            </div>
+
         </div>
     </div>
 </div>

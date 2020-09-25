@@ -3,6 +3,7 @@
 namespace Vision\Http\Controllers;
 
 use Vision\User;
+use Vision\StudentRegistration;
 use Vision\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
@@ -18,6 +19,7 @@ use Vision\Level;
 use Vision\Algorithm;
 use Storage;
 use Log;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -29,9 +31,10 @@ class UserController extends Controller
      */
     public function index(User $model)
     {
-        
-        $users =  User::with('userDetails')->whereIn('role', [User::ROLE_ADMIN_USER,User::ROLE_USER])->paginate(10);
-        return view('users.index')->with('users', $users);
+
+        $users = StudentRegistration::orderBy('created_at','desc')->paginate(10);
+        $state = DB::table('master_states')->pluck('state_name','id');
+        return view('users.index',compact('users','state'));
     }
 
     public function create()
@@ -92,21 +95,15 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'status' => 'required',
+
             'name' => 'required',
             'mobile' => 'required|regex:/[0-9]{10}/|digits:10',
-            'gender' => 'required',
-            'user_bio' => 'required',
-            'age' => 'required',
-            'verification' => 'required',
-            'level_id' => 'required',
-            'is_primary' => 'required',
-            'is_bot' => 'required',
-            'profile_pic' => 'required|image|max:2048',
+            'email' => 'required',
+            'password' => 'required',
+            'ugcollage' => 'required',
+            'state_type' => 'required',
+            'city' => 'required',
         ]);
-
-        $level = Level::find($request->input('level_id'));
-
         $user = new User();
         $user->name =  $request->input('name');
         $user->mobile =  $request->input('mobile');
@@ -136,7 +133,66 @@ class UserController extends Controller
         return redirect('/users');
     }
 
-    
+
+    public function stores(Request $request){
+      $validatedData = $request->validate([
+
+          'name' => 'required',
+          'mobile' => 'required|regex:/[0-9]{10}/|digits:10',
+          'email' => 'required',
+          'password' => 'required',
+          'ugcollage' => 'required',
+          'state_type' => 'required',
+          'city' => 'required',
+      ]);
+      $user = new StudentRegistration();
+      $user->user_name =  $request->input('name');
+      $user->user_mobile =  $request->input('mobile');
+      $user->user_email =  $request->input('email');
+      $user->user_password =  sha1($request->input('password'));
+      $user->ug_college =  $request->input('ugcollage');
+      $user->city =  $request->input('city');
+      $user->state =  $request->input('state_type');
+      $user->save();
+      return redirect('/users');
+    }
+
+
+    public function updateStudent(Request $request,$id)
+    {
+      $validatedData = $request->validate([
+
+          'name' => 'required',
+          'mobile' => 'required|regex:/[0-9]{10}/|digits:10',
+          'email' => 'required',
+          'password' => 'required',
+          'ugcollage' => 'required',
+          'state_type' => 'required',
+          'city' => 'required',
+      ]);
+        $user = StudentRegistration::findOrFail($id);
+        $user->user_name =  $request->input('name');
+        $user->user_mobile =  $request->input('mobile');
+        $user->user_email =  $request->input('email');
+        $user->user_password =  bcrypt("User#$735");
+        $user->ug_college =  $request->input('ugcollage');
+        $user->city =  $request->input('city');
+        $user->state =  $request->input('state_type');
+        $user->save();
+
+        return redirect('/users');
+    }
+
+
+
+       public function destroy($id){
+         $gift = StudentRegistration::findOrFail($id)->delete();
+         return redirect('/users');
+       }
+
+
+
+
     public function updateProfile(Request $request)
     {
         // 'profile_pic' => 'required|image|max:2048',
@@ -432,4 +488,13 @@ class UserController extends Controller
         $items = $items instanceof Collection ? $items : Collection::make($items);
         return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
     }
+
+    public function myformAjax($id){
+        $cities = DB::table("master_cities")
+                    ->where("state_id",$id)
+                    ->get();
+        return json_encode($cities);
+    }
+
+
 }

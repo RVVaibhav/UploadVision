@@ -14,7 +14,7 @@ class TestController extends Controller{
 
 
     public function create(){
-     $items = Headers::getHeaders();
+    $items = Headers::getHeaders();
     return view('test.indextest',['items' => $items]);
 
  }
@@ -25,12 +25,14 @@ class TestController extends Controller{
                   $post = new AddTest;
                   if($request->radio == 'YES'){
                     $post->is_view_correct_answers_allowed = 1;
-                    $post->is_view_correct_answers_allowed = 0;
-
                   }elseif ($request->radio == 'NO')   {
-                      $post->is_view_correct_answers_allowed = 1;
-                      $post->is_view_correct_answers_allowed = 0;
-               }
+                    $post->is_view_correct_answers_allowed = 0;
+                  }
+                  if($request->radios == 'Paid'){
+                    $post->test_group = 1;
+                  }elseif ($request->radios == 'Free')   {
+                    $post->test_group = 0;
+                  }
                 //  $post->is_view_correct_answers_allowed = $post->allow_view;
                   $post->test_name = $request->input('testname');
                   $post->description = $request->input('description');
@@ -41,6 +43,7 @@ class TestController extends Controller{
                   $post->min_percent = $request->input('min_percent');
                   $post->correct_score = $request->input('correctScore');
                   $post->incorrect_score = $request->input('incorrect');
+                  $post->test_category = $request->input('category');
                   $post->admin_id = auth()->user()->id;
                   $post->total_marks = $request->input('totalm');
                   $post->num_questions = $request->input('numQue');
@@ -58,8 +61,9 @@ class TestController extends Controller{
 
   public function index(){
 //    Country::all()->pluck('name', 'id')
+     $category = DB::table('test_category')->pluck('test_cat','id');
      $items = DB::table('test_header_1')->pluck('header_1','test_header_1_id');
-     return view('test.indextest',compact('items'));
+     return view('test.indextest',compact('items','category'));
  }
 
    public function myformAjax($id){

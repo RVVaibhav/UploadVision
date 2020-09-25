@@ -23,8 +23,8 @@ class QuizController extends Controller
 
     public function index(){
       //    Country::all()->pluck('name', 'id')
-
-      return view('quiztab.indexQuiz');
+      $category = DB::table('question_category')->pluck('question_cat','id');
+      return view('quiztab.indexQuiz',compact('category'));
         //   return view('test.indextest',compact('items'));
        }
 
@@ -32,7 +32,7 @@ class QuizController extends Controller
        public function store(Request $request) {
 
                         $post = new Questions;
-                        $post->subject_group_id = 1;
+                        $post->subject_group_id =$request->input('category');
                         $post->question_type = $request->input('question_type');
                         $post->question = $request->input('question');
                         $post->description = $request->input('description');

@@ -2,6 +2,8 @@
      'class' => 'login',
     'namePage' => 'login',
     'activePage' => 'login',
+    'backgroundImage' =>  url("/img/header.jpg"),
+  
 ])
 @section('content')
 <div class="container">
