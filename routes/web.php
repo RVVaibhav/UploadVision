@@ -34,6 +34,8 @@ Route::middleware('auth')->group(function() {
     Route::resource('quiz', 'QuizController');
     Route::resource('testQuiz', 'TestQuestionController');
     Route::resource('category', 'CategoriesController');
+    Route::resource('reading', 'ReadingStuffController');
+    Route::resource('study', 'StudyTipsController');
     Route::resource('datauploads', 'DataUploadsController');
     Route::resource('users', 'UserController');
     Route::post('/stores', 'UserController@stores')->name('stores');
@@ -48,6 +50,10 @@ Route::middleware('auth')->group(function() {
     Route::get('download-excel-file/{type}', array('as'=>'excel-file','uses'=>'DataUploadsController@downloadExcelFile'));
     Route::put('testQues/{id}', 'TestQuestionController@update');
     Route::post('file-upload', 'DataUploadsController@fileUploadPost')->name('file.upload.post');
+    Route::post('test-upload', 'DataUploadsController@testUploadPost')->name('test.upload.post');
+    Route::get('show', 'DataUploadsController@show');
+
+    Route::get('word-export', 'DataUploadsController@wordExport');
 
 
 

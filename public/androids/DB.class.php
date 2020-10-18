@@ -90,6 +90,21 @@ catch (Exception $Ex) {
 }
 }
 
+public function selectStudyTipsData($table,$type) {
+try {
+     $sql ="SELECT * FROM $table WHERE `type`='$type'";
+     //echo $sql;
+  //  exit;
+    $result = mysqli_query($this->connection, $sql);
+    //var_dump($result);
+   // exit;
+    return $result;
+}
+catch (Exception $Ex) {
+    echo $Ex;
+}
+}
+
      public function selectMyInterest($vid,$cid) {
 
         //$f= Where $f='$v'
@@ -142,7 +157,7 @@ catch (Exception $Ex) {
   }
 
 
-    public function insert($table,$rfields, $rvalues) {
+    public function insert($table,$rfields,$rvalues) {
         try {
 
             $this->table=$table;
@@ -152,7 +167,7 @@ catch (Exception $Ex) {
 
 
 	           //redirect('location:index.php');
-          //  echo $sql;
+            echo $sql;
            //  exit;
             $result = mysqli_query($this->connection, $sql);
             if ($result) {

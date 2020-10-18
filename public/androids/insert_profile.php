@@ -16,7 +16,7 @@ date_default_timezone_set('Asia/Kolkata');
 
        $fields=array('user_name','user_email','user_password','user_mobile','ug_college','city','state','created_at','updated_at');
 
-       $values=array($name,$email,$passcode,$mobile,$ugC,$city,$state,$time_now,$time_now);
+       $values=array($name,$email,$passcode,$mobile,$ugC,$city,$state,$created,$created);
        $result_insert=$con->insert('vision_registration',$fields,$values);
     //	echo $result_insert  ; exit;
    if($result_insert){

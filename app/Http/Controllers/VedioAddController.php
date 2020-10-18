@@ -30,7 +30,7 @@ class VedioAddController extends Controller
    public function store(Request $request){
        $this->validate($request, [
           'vedioTitle' => 'required',
-          'image' => 'required|mimes:mp4,mov,ogg,qt|max:500000',
+          'image' => 'required|mimes:mp4,mov,ogg,qt',
           'startdate'=> 'required',
           'enddate' => 'required',
        ]);
@@ -48,6 +48,7 @@ class VedioAddController extends Controller
              //$extension = $request->file('image')->getClientOriginalExtension();
              // Filename to store
              $fileNameToStore= '/uploads/'.'vid-'.time().'.'.$extension;
+          //   $path = $request->file('image')->storeAs('public/video', $fileNameToStore);
              Storage::disk('public')->put($fileNameToStore,  File::get($cover));
              // Upload Image
             // $path = $request->file('image')->storeAs('public/video', $fileNameToStore);

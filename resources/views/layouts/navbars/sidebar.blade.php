@@ -74,6 +74,18 @@
           <p>{{ __('Test Question') }}</p>
         </a>
       </li>
+      <li class = "@if ($activePage == 'study') active @endif">
+        <a href="{{ url('/study') }}">
+          <i class="now-ui-icons shopping_box"></i>
+          <p>{{ __('Study Tips') }}</p>
+        </a>
+      </li>
+      <li class = "@if ($activePage == 'reading') active @endif">
+        <a href="{{ url('/reading') }}">
+          <i class="now-ui-icons shopping_box"></i>
+          <p>{{ __('Reading Stuff') }}</p>
+        </a>
+      </li>
       <li class = "@if ($activePage == 'category') active @endif">
         <a href="{{ url('/category') }}">
           <i class="now-ui-icons shopping_box"></i>
@@ -102,7 +114,7 @@
       <li class = "@if ($activePage == 'vedio') active @endif">
         <a href="{{ url('/vedio') }}">
           <i class="now-ui-icons text_caps-small"></i>
-          <p>{{ __('Vedio') }}</p>
+          <p>{{ __('Video') }}</p>
         </a>
       </li>
       <li class = "@if ($activePage == 'typography') active @endif">

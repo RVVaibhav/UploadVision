@@ -72,11 +72,6 @@ class HeadersSeed extends Seeder
                 'test_header_2'=> 'Fourth Year',
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-          ],[
-                'test_header_1_id' => '',
-                'test_header_2'=> 'Fourth Year',
-                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
           ]]);
       }  //
 
