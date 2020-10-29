@@ -12,8 +12,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <form action="{{ url('/users') }}" enctype="multipart/form-data" method="post">
-                <div class="card-header">
+                  <div class="card-header">
                     <h4>Create User</h4>
                 </div>
                 <div class="card-body">
@@ -108,7 +107,7 @@
                                     <select class="form-control  {{ $errors->has('age') ? 'is-invalid':'' }}"
                                         name="age" required>
                                         <option value="">-Select age-</option>
-                                        @for($i = 12; $i <= 120; $i++) 
+                                        @for($i = 12; $i <= 120; $i++)
                                             <option value="{{$i}}">{{$i}}</option>
                                          @endfor
                                     </select>

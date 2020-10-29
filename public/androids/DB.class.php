@@ -90,9 +90,39 @@ catch (Exception $Ex) {
 }
 }
 
-public function selectStudyTipsData($table,$type) {
+public function selectStudyTipsData($table) {
 try {
-     $sql ="SELECT * FROM $table WHERE `type`='$type'";
+     $sql ="SELECT * FROM $table";
+     //echo $sql;
+  //  exit;
+    $result = mysqli_query($this->connection, $sql);
+    //var_dump($result);
+   // exit;
+    return $result;
+}
+catch (Exception $Ex) {
+    echo $Ex;
+}
+}
+
+public function selectStudyTipsDatas($table,$type) {
+try {
+     $sql ="SELECT * FROM $table where type='$type'";
+     //echo $sql;
+  //  exit;
+    $result = mysqli_query($this->connection, $sql);
+    //var_dump($result);
+   // exit;
+    return $result;
+}
+catch (Exception $Ex) {
+    echo $Ex;
+}
+}
+
+public function selectSubTDatas($table,$type) {
+try {
+     $sql ="SELECT * FROM $table where subsription='$type'";
      //echo $sql;
   //  exit;
     $result = mysqli_query($this->connection, $sql);

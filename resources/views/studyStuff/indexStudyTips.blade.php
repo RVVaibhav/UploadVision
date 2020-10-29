@@ -40,7 +40,7 @@
                                          <!-- {!! Form::label('text', 'Quiz Name', ['class' => 'form-control'])!!} -->
                                          {!! Form::label('text', 'Description:', ['class' => 'col-lg-8 control-label'])!!}
                                          <div class="col-lg-12">
-                                               {!! Form::textarea('description', '', ['class' => 'col-lg-2 control-label summernote','placeholder' => 'Description'])!!}
+                                              {{Form::textarea('description', '', ['id' => 'article-ckeditor', 'class' => 'form-control', 'placeholder' => 'Description'])}}
                                          </div>
                                      </div>
                                      <div class="form-group">

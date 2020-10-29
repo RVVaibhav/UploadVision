@@ -7,13 +7,13 @@ $type=$_POST['type'];
 
 
 
-  $result=$con->selectStudyTipsData("study_tips_data",$type);
+  $result=$con->selectStudyTipsDatas("study_tips_data",$type);
         if($result==true){
         	     while($row=$result->fetch_assoc()){
             	   $id=$row['id'];
             	   $title=$row['title'];
                    $description=$row['description'];
-            	   $type=$row['type'];
+            	     $type=$row['type'];
                    $createdBy=$row['createdBy'];
             	   $attachment=$row['attachment'];
                    $created_at=$row['created_at'];
