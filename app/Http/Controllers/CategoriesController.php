@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Vision\TestCategory;
 use Vision\VideoCategory;
 use Vision\QuestionCategory;
+use Vision\QuestionFormat;
 use Illuminate\Support\Facades\DB;
 
 class CategoriesController extends Controller
@@ -48,12 +49,22 @@ class CategoriesController extends Controller
               $post->save();
 
              return redirect('/category')->with('success', 'VideoCategory Add Successfully!');
-         }else {
+         }else  if($tabId == 3) {
            $this->validate($request, [
                      'question_cat' => 'required',
                   ]);
               $post = new QuestionCategory;
               $post->question_cat = $request->input('question_cat');
+              $post->admin_id = auth()->user()->id;
+              $post->save();
+
+             return redirect('/category')->with('success', 'QuestionCategory Add Successfully!');
+         }else {
+           $this->validate($request, [
+                     'question_cat_f' => 'required',
+                  ]);
+              $post = new QuestionFormat;
+              $post->question_format_cat = $request->input('question_cat_f');
               $post->admin_id = auth()->user()->id;
               $post->save();
 

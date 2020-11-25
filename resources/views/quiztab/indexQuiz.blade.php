@@ -24,10 +24,12 @@
                                 </div>
                             </div>
                              <div class="form-group">
-                              {!! Form::label('text', 'Question Type:', ['class' => 'col-lg-8 control-label'])!!}
-                                <div class="col-lg-12">
+                              {!! Form::label('text', 'Question By:', ['class' => 'col-lg-8 control-label'])!!}
+                              <div class="col-lg-12">
                             <select placeholder="Filter" class="form-control" name="question_type" style="height:40px">
-                                <option>MCQ</option>
+                                <option>Amol Sir</option>
+                                <option>Suraj Sir</option>
+                                <option>Govardhan  Sir</option>
                             </select>
                               </div>
                             </div>
@@ -55,30 +57,30 @@
                                </div>
                            </div>
                             <div class="form-group">
-                              <div class="col-lg-12">
+                              <div class="col-md-12">
                                 <h6 class="quiztitle">Option 1)</h6>
-                                <textarea  name="option_1" class='form-control summernote' ></textarea>
+                                <textarea  name="option_1" class='form-control' ></textarea>
                               </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-lg-12">
+                            <div class="col-md-12">
                             <h6 class="quiztitle">Option 2)</h6>
 
-                            <textarea  name="option_2" class='form-control summernote'></textarea>
+                            <textarea  name="option_2" class='form-control'></textarea>
                         </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-lg-12">
+                            <div class="col-md-12">
                             <h6 class="quiztitle">Option 3)</h6>
 
-                            <textarea  name="option_3" class='form-control summernote'></textarea>
+                            <textarea  name="option_3" class='form-control'></textarea>
                         </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-lg-12">
+                            <div class="col-md-12">
                             <h6 class="quiztitle">Option 4)</h6>
 
-                            <textarea  name="option_4" class='form-control summernote'></textarea>
+                            <textarea  name="option_4" class='form-control'></textarea>
                         </div>
                         </div>
                         <div class="form-group">

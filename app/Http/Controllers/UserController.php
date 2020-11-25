@@ -137,7 +137,8 @@ class UserController extends Controller
     public function stores(Request $request){
       $validatedData = $request->validate([
 
-          'name' => 'required',
+          'fname' => 'required',
+          'lname' => 'required',
           'mobile' => 'required|regex:/[0-9]{10}/|digits:10',
           'email' => 'required',
           'password' => 'required',
@@ -146,7 +147,7 @@ class UserController extends Controller
           'city' => 'required',
       ]);
       $user = new StudentRegistration();
-      $user->user_name =  $request->input('name');
+      $user->user_name =  $request->input('fname').' '.$request->input('lname');
       $user->user_mobile =  $request->input('mobile');
       $user->user_email =  $request->input('email');
       $user->user_password =  sha1($request->input('password'));

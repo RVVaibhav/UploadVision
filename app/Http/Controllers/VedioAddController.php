@@ -21,10 +21,10 @@ class VedioAddController extends Controller
     }
 
     public function index(){
-       $category = DB::table('video_category')->pluck('video_cat','id');
-       $posts = Post::orderBy('created_at','desc')->paginate(10);
+        $items = DB::table('test_header_1')->pluck('header_1','test_header_1_id');
+       $posts = Post::orderBy('created_at','desc')->paginate(30);
   //    Country::all()->pluck('name', 'id')
-       return view('vedioTab.indexVedio',compact('posts','category'));
+       return view('vedioTab.indexVedio',compact('posts','items'));
    }
 
    public function store(Request $request){

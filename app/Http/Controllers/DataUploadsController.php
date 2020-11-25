@@ -141,37 +141,77 @@ public function show()  {
       return view('uploads.indexshow', compact('user','test'));
   }
 
-  public function wordExport(Request $request)  {
-    $phpWord = new PhpOffice\PhpWord\PhpWord();
-$section = $phpWord->addSection();
+  public function wordExport() {
+     $user =DB::table('question_b_test')->get();
+     $test =DB::table('test_class_value')->get();
+      header("Content-type: application/vnd.ms-word");
+      header("Content-Disposition: attachment;Filename=YOUR_DOC_NAME.doc");
 
-$header = $section->addHeader();
-$header->addText('This is my fabulous header!');
+      echo ' <h2 align = "middle">VISION AYURVED ACADEMY,NAGPUR</h2><br><br>';
+      foreach($test as $tes){
+      echo '<table border="0" width = "100%"  align = "middle" >
+           <td align = "middle"><strong>TIME: </strong>'.$tes->test_time.'</td>
+           <td align = "middle"><strong>SUB: </strong>'.$tes->test_subject.'</td>
+           <td align = "middle"><strong>MARKS: </strong>'.$tes->test_marks.'</td>
+       </table><br><br><br>';
+     }
+      $tableData = '';
+      $tableStart = '<table class="table table-striped" width = "100%">
+             <thead>
+               <tr>
+                 <th scope="col" >No</th>
+                 <th scope="col" >Question</th>
+                 <th scope="col" >A</th>
+                 <th scope="col" >B</th>
+                 <th scope="col" >C</th>
+                 <th scope="col" >D</th>
+               </tr>
+             </thead>
+             <tbody> ';
+                $tableBody = '';
+                  foreach($user as $post){
+                    $tableBody =$tableBody.'<tr><td>'.$post->question_id.'</td>'.
+                      '<td>'.$post->question.'</td>'.
+                       '<td>'.$post->option_1.'</td>'.
+                      '<td>'.$post->option_2.'</td>'.
+                      '<td>'.$post->option_3.'</td>'.
+                      '<td>'.$post->option_4.'</td></tr>';
+                     }
+              $tableEnd ='
 
-$footer = $section->addFooter();
-$footer->addText('Footer text goes here.');
+             </tbody>
 
-$textrun = $section->addTextRun();
-$textrun->addText('Some text. ');
-$textrun->addText('And more Text in this Paragraph.');
+          </table>';
 
-$textrun = $section->addTextRun();
-$textrun->addText('New Paragraph! ', ['bold' => true]);
-$textrun->addText('With text...', ['italic' => true]);
+       $tableData = $tableStart.$tableBody.$tableEnd;
 
-$rows = 10;
-$cols = 5;
-$section->addText('Basic table', ['size' => 16, 'bold' => true]);
+       echo $tableData;
 
-$table = $section->addTable();
-for ($row = 1; $row <= 8; $row++) { $table->addRow();
-    for ($cell = 1; $cell <= 5; $cell++) { $table->addCell(1750)->addText("Row {$row}, Cell {$cell}");
-    }
-}
 
-$objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
-$objWriter->save('MyDocument.docx');
-  }
+         /*$users =DB::table('question_b_test')->get();
+          $templateProcessor = new TemplateProcessor('word-template/user.docx');
+          $index = 0;
+          $txt = '';
+          $result = DB::table('question_b_test')->select(DB::raw('question_id'))->get();
+          foreach ($users as $user1) {
+          $templateProcessor->setValue('question_id', $user1-);
+          $cnt++;
+        }
+
+          foreach ($users as $key => $value) {
+          $templateProcessor->setValue('question_id',$users);
+          $templateProcessor->setValue('ROW#' . $index, $index);
+        }
+
+
+         //$templateProcessor->setValue('question_id1', $users[$cnt]->question_id);
+
+          $fileName = "fsd";
+          $templateProcessor->saveAs($fileName . '.docx');
+          return response()->download($fileName . '.docx')->deleteFileAfterSend(true);*/
+
+      }
+
 
 
 }

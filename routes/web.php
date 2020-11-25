@@ -29,6 +29,7 @@ Route::middleware('auth')->group(function() {
     Route::post('addrole/{id}/edit', 'AlgorithmController@editRole');
     Route::post('level/slideuser', 'AlgorithmController@addSlideuser');
     Route::resource('test', 'TestController');
+    Route::resource('aboutus', 'AboutUsController');
     Route::resource('headers', 'HeadersController');
     Route::resource('vedio', 'VedioAddController');
     Route::resource('quiz', 'QuizController');
@@ -38,6 +39,7 @@ Route::middleware('auth')->group(function() {
     Route::resource('study', 'StudyTipsController');
     Route::resource('datauploads', 'DataUploadsController');
     Route::resource('users', 'UserController');
+    Route::resource('questionformat', 'QuestionFormatController');
     Route::post('/stores', 'UserController@stores')->name('stores');
     Route::put('edit/{id}', 'UserController@updateStudent');
     Route::delete('users/{id}', 'UserController@destroy');
@@ -52,7 +54,6 @@ Route::middleware('auth')->group(function() {
     Route::post('file-upload', 'DataUploadsController@fileUploadPost')->name('file.upload.post');
     Route::post('test-upload', 'DataUploadsController@testUploadPost')->name('test.upload.post');
     Route::get('show', 'DataUploadsController@show');
-
     Route::get('word-export', 'DataUploadsController@wordExport');
 
 

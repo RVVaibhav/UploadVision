@@ -33,18 +33,39 @@
                       </div>
                       <div class="form-group">
                          {!! Form::label('category', 'Video Category', ['class' => 'col-lg-8 control-label'])!!}
-                          <div class="col-lg-12">
-                            <select name="category" id="category" class="form-control">
-                               @foreach($category as $id => $cat)
-                                   <option value="{{ $id }}">
-                                       {{ $cat }}
-                                   </option>
-                               @endforeach
-                           </select>
-                            @if($errors->has('test_header_1_id'))
-                            <span class="help-block text-danger">{{$errors->first('test_header_1_id')}}</span>
-                            @endif
-                          </div>
+                         <div class="form-group">
+                            {!! Form::label('headers', 'Headers One:', ['class' => 'col-lg-8 control-label'])!!}
+                             <div class="col-lg-12">
+                               <select name="country_id" id="country" class="form-control">
+                                  @foreach($items as $id => $country)
+                                      <option value="{{ $id }}">
+                                          {{ $country }}
+                                      </option>
+                                  @endforeach
+                              </select>
+                               @if($errors->has('test_header_1_id'))
+                               <span class="help-block text-danger">{{$errors->first('test_header_1_id')}}</span>
+                               @endif
+                             </div>
+                         </div>
+                         <div class="form-group">
+                            {!! Form::label('headers', 'Headers Two:', ['class' => 'col-lg-8 control-label'])!!}
+                             <div class="col-lg-12">
+                               <select name="city" id="country" class="form-control">
+
+                              </select>
+                               @if($errors->has('test_header_2_id'))
+                               <span class="help-block text-danger">{{$errors->first('test_header_1_id')}}</span>
+                               @endif
+                             </div>
+                         </div>
+                         <div class="form-group">
+                            <!-- {!! Form::label('text', 'Quiz Name', ['class' => 'form-control'])!!} -->
+                            {!! Form::label('text', 'Headers three:', ['class' => 'col-lg-8 control-label'])!!}
+                            <div class="col-lg-12">
+                                {!!Form::text('title', '', ['class' => 'form-control', 'placeholder' => 'Title'])!!}
+                            </div>
+                        </div>
                       </div>
                        <div class="form-group">
                           {!! Form::label('startdate', 'Start Date (Video Visibility Start Date. YYYY-MM-DD HH:ll:SS):', ['class' => 'col-lg-12 control-label'])!!}

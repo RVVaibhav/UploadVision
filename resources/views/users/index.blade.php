@@ -21,8 +21,8 @@
                             {{ csrf_field() }}
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label>Name <span style="color: red">*</span></label>
-                                    <input type="text" name="name" value=""
+                                    <label>First Name <span style="color: red">*</span></label>
+                                    <input type="text" name="fname" value=""
                                         class="form-control" required
                                         placeholder="">
                                 </div>
@@ -38,25 +38,10 @@
                                     <input type="text" name="email" value=""
                                         class="form-control" required
                                         placeholder="">
+                                </div>
 
-                                </div>
                                 <div class="form-group">
-                                    <label>Password <span style="color: red">*</span></label>
-                                    <input type="text" name="password" value=""
-                                        class="form-control" required
-                                        placeholder="">
-
-                                </div>
-                                <div class="form-group">
-                                    <label>UG Collage<span style="color: red">*</span></label>
-                                    <input type="text" name="ugcollage" value=""
-                                        class="form-control" required
-                                        placeholder="">
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label>State</label>
+                                    <label>State<span style="color: red">*</span></label>
                                     <select placeholder="Filter" class="form-control" id="state_type" name="state_type">
                                       @foreach($state as $id => $country)
                                           <option value="{{ $id }}">
@@ -68,8 +53,31 @@
                                      <span class="help-block text-danger">{{$errors->first('id')}}</span>
                                      @endif
                                 </div>
+
+
+                            </div>
+                            <div class="col-md-4">
+                              <div class="form-group">
+                                  <label>Last Name <span style="color: red">*</span></label>
+                                  <input type="text" name="lname" value=""
+                                      class="form-control" required
+                                      placeholder="">
+                              </div>
+                              <div class="form-group">
+                                  <label>UG College<span style="color: red">*</span></label>
+                                  <input type="text" name="ugcollage" value=""
+                                      class="form-control" required
+                                      placeholder="">
+                              </div>
+                              <div class="form-group">
+                                  <label>Password <span style="color: red">*</span></label>
+                                  <input type="text" name="password" value=""
+                                      class="form-control" required
+                                      placeholder="">
+                              </div>
+
                                     <div class="form-group">
-                                        <label>City</label>
+                                        <label>City<span style="color: red">*</span></label>
                                         <select name="city" id="city" class="form-control">
                                        </select>
                                         @if($errors->has('id'))

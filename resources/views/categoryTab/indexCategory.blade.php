@@ -25,6 +25,9 @@
                                    <li class="nav-item">
                                      <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Question Category</a>
                                    </li>
+                                   <li class="nav-item">
+                                     <a class="nav-link" id="contact-tab" data-toggle="tab" href="#questionf" role="tab" aria-controls="contact" aria-selected="false">Question Format Category</a>
+                                   </li>
                                  </ul>
                                  <div class="tab-content" id="myTabContent">
                                    <div class="tab-pane fade show active my-4" id="home" role="tabpanel" aria-labelledby="home-tab">
@@ -50,8 +53,19 @@
                                      {!!Form::text('question_cat', '', ['class' => 'form-control', 'placeholder' => 'Question Category'])!!}
                                      {!! Form::submit('Submit', ['class' => 'btn btn-lg btn-info pull-left'] ) !!}
                                      {!!Form::close()!!}
+                                   </div>
+                                   <div class="tab-pane fade my-4" id="questionf" role="tabpanel" aria-labelledby="contact-tab">
+                                     {{csrf_field()}}
+                                     {!! Form::open(['action' => 'CategoriesController@store','method' => 'POST']) !!}
+                                     <input name="id" value="4" type="hidden">
+                                     {!!Form::text('question_cat_f', '', ['class' => 'form-control', 'placeholder' => 'Question Format Category'])!!}
+                                     {!! Form::submit('Submit', ['class' => 'btn btn-lg btn-info pull-left'] ) !!}
+                                     {!!Form::close()!!}
 
                                    </div>
+
+
+
                                  </div>
                            </div>
 

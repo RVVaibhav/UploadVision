@@ -43,12 +43,23 @@
                            </div>
                        </div>
                        <div class="form-group">
+                          {!! Form::label('headers', 'Headers Three:', ['class' => 'col-lg-8 control-label'])!!}
+                           <div class="col-lg-12">
+                             <select name="three" id="three" class="form-control">
+                               <option>Ayurved</option>
+                               <option>Modern</option>
+                            </select>
+                           </div>
+                       </div>
+                       <div class="form-group">
                           <!-- {!! Form::label('text', 'Quiz Name', ['class' => 'form-control'])!!} -->
                           {!! Form::label('text', 'Headers three:', ['class' => 'col-lg-8 control-label'])!!}
                           <div class="col-lg-12">
                               {!!Form::text('title', '', ['class' => 'form-control', 'placeholder' => 'Title'])!!}
                           </div>
                       </div>
+
+
                        <div class="form-group">
                              <div class="col-lg-10">
                                  {!! Form::submit('Submit', ['class' => 'btn btn-lg btn-info pull-right'] ) !!}

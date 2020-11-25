@@ -86,6 +86,19 @@
           <p>{{ __('Reading Stuff') }}</p>
         </a>
       </li>
+
+      <li class = "@if ($activePage == 'questionformat') active @endif">
+        <a href="{{ url('/questionformat') }}">
+          <i class="now-ui-icons shopping_box"></i>
+          <p>{{ __('QUESTION FORMAT') }}</p>
+        </a>
+      </li>
+      <li class = "@if ($activePage == 'aboutus') active @endif">
+        <a href="{{ url('/aboutus') }}">
+          <i class="now-ui-icons shopping_box"></i>
+          <p>{{ __('About Us') }}</p>
+        </a>
+      </li>
       <li class = "@if ($activePage == 'category') active @endif">
         <a href="{{ url('/category') }}">
           <i class="now-ui-icons shopping_box"></i>

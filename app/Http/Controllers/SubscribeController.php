@@ -78,9 +78,6 @@ class SubscribeController extends Controller
              'complete_t' => 'required',
              'user_bio_t' => 'required',
            ]);
-
-
-
             $post = new Subscription;
             $post->description = $request->input('user_bio_t');
             $post->subsription = "TESTSERIES";

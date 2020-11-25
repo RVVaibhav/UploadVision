@@ -50,18 +50,16 @@
 
                                 </div>
                                 <div class="form-group">
-                                    <label>UG Collage<span style="color: red">*</span></label>
+                                    <label>UG College<span style="color: red">*</span></label>
                                     <input type="text" name="mobile" value=""
                                         class="form-control" required
-                                        placeholder="">
+                                       placeholder="">
 
                                 </div>
-
-
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label>State</label>
+                                    <label>State<span style="color: red">*</span></label>
                                     <select placeholder="Filter" class="form-control" id="state_type" name="state_type">
                                       @foreach($state as $id => $country)
                                           <option value="{{ $id }}">

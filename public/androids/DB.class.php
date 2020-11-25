@@ -120,6 +120,23 @@ catch (Exception $Ex) {
 }
 }
 
+
+
+public function selectQFDatas($table) {
+try {
+     $sql ="SELECT * FROM $table ";
+     //echo $sql;
+  //  exit;
+    $result = mysqli_query($this->connection, $sql);
+    //var_dump($result);
+   // exit;
+    return $result;
+}
+catch (Exception $Ex) {
+    echo $Ex;
+}
+}
+
 public function selectSubTDatas($table,$type) {
 try {
      $sql ="SELECT * FROM $table where subsription='$type'";

@@ -12,7 +12,8 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                  <div class="card-header">
+                <form action="{{ url('/users') }}" enctype="multipart/form-data" method="post">
+                <div class="card-header">
                     <h4>Create User</h4>
                 </div>
                 <div class="card-body">

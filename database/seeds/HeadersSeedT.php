@@ -16,10 +16,16 @@ class HeadersSeedT extends Seeder
       DB::table('test_header_3')->insert([[
           'test_header_1_id' => '4',
           'test_header_2_id'=> '1',
-          'test_header_3'=> 'Sharir Rachana',
+          'test_header_3'=> 'Ayurved',
           'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
           'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-      ],[
+      ],  DB::table('test_header_3')->insert([[
+            'test_header_1_id' => '4',
+            'test_header_2_id'=> '1',
+            'test_header_3'=> 'Modern',
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ],[
           'test_header_1_id' => '4',
             'test_header_2_id'=> '1',
             'test_header_3'=> 'Sharir Kriya',
