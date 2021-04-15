@@ -46,9 +46,9 @@
                                      <div class="form-group">
                                         <div class="col-lg-12">
                                      <select placeholder="Filter" class="form-control" name="question_type" style="height:40px">
-                                        <option>Sir1</option>
-                                          <option> Sir2</option>
-                                            <option> Sir3</option>
+                                        <option>Amol Sir</option>
+                                          <option> Suraj Sir</option>
+                                            <option> GauriShankar Sir </option>
                                     </select>
                                       </div>
                                     </div>
@@ -71,15 +71,15 @@
                                          <!-- {!! Form::label('text', 'Quiz Name', ['class' => 'form-control'])!!} -->
                                          {!! Form::label('text', 'Description:', ['class' => 'col-lg-8 control-label'])!!}
                                          <div class="col-lg-12">
-                                               {!! Form::textarea('description', '', ['class' => 'col-lg-2 control-label summernote','placeholder' => 'Description'])!!}
+                                                {{Form::textarea('description', '', ['id' => 'article-ckeditor', 'class' => 'form-control', 'placeholder' => 'Description'])}}
                                          </div>
                                      </div>
                                      <div class="form-group">
                                         <div class="col-lg-12">
                                      <select placeholder="Filter" class="form-control" name="question_type" style="height:40px">
-                                        <option>Sir1</option>
-                                          <option> Sir2</option>
-                                            <option> Sir3</option>
+                                       <option>Amol Sir</option>
+                                         <option> Suraj Sir</option>
+                                           <option> GauriShankar Sir </option>
                                      </select>
                                       </div>
                                     </div>
@@ -112,15 +112,15 @@
                                          <!-- {!! Form::label('text', 'Quiz Name', ['class' => 'form-control'])!!} -->
                                          {!! Form::label('text', 'Description:', ['class' => 'col-lg-8 control-label'])!!}
                                          <div class="col-lg-12">
-                                               {!! Form::textarea('description', '', ['class' => 'col-lg-2 control-label summernote','placeholder' => 'Description'])!!}
+                                              {{Form::textarea('description', '', ['id' => 'article-ckeditor', 'class' => 'form-control', 'placeholder' => 'Description'])}}
                                          </div>
                                      </div>
                                      <div class="form-group">
                                         <div class="col-lg-12">
                                      <select placeholder="Filter" class="form-control" name="question_type" style="height:40px">
-                                        <option>Sir1</option>
-                                          <option> Sir2</option>
-                                            <option> Sir3</option>
+                                       <option>Amol Sir</option>
+                                         <option> Suraj Sir</option>
+                                           <option> GauriShankar Sir </option>
                                      </select>
                                       </div>
                                     </div>

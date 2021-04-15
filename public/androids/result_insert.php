@@ -17,10 +17,25 @@ date_default_timezone_set('Asia/Kolkata');
         $result_insert=$con->insertResult('result_test_questions',$fields,$values);
       //	echo $result_insert  ; exit;
    if($result_insert){
-     $profile = array('stk' => 'success','Code' => '200');
+     $result=$con->getResultData($user_id,$test_id);
+     $cnt=mysqli_num_rows($result);
+    if($cnt > 0){
+      while($row=mysqli_fetch_assoc($result)){
+            $result_id=$row['result_id'];
+            $user_id=$row['user_id'];
+            $test_id=$row['test_id'];
+            $question_id=$row['question_id'];
+            $is_attempted=$row['is_attempted'];
+            $selected_option=$row['selected_option'];
+            $is_tagged=$row['is_tagged'];
+                  //$otp=$row['otp'];
+      }
+        $profile['ResultData'][] = array('stk' => 'success','result_id' =>$result_id,'user_id' =>$user_id,
+       'test_id'=>$test_id,'question_id'=>$question_id,'is_attempted'=>$is_attempted,'selected_option'=>$selected_option,'is_tagged'=>$is_tagged,'Code' => '200');
+     }
 
 	   }else {
-    $profile = array('stk' => 'unsucces','Code' => '400');
+      $profile = array('stk' => 'unsucces','Code' => '400');
 }
 
 echo json_encode($profile,JSON_PRETTY_PRINT);

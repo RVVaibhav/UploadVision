@@ -1,5 +1,5 @@
 @extends('layouts.app', [
-'namePage' => 'Add New Vedio',
+'namePage' => 'Add New Video',
 'class' => 'login-page sidebar-mini ',
 'activePage' => 'vedio',
 'backgroundImage' => asset('now') . "/img/bg14.jpg",
@@ -31,8 +31,16 @@
                           </div>
                             </div>
                       </div>
+                      <div class="form-row">
+                          <div class="col-12">
+                               {!! Form::label('text', 'thumbimage:', ['class' => 'col-lg-12 control-label'])!!}
+                         <div class="col-xs-3 col-lg-12">
+                          <input type="file" name="thumbimage" class="form-control">
+                           {!! $errors->first('thumbimage', '<p class="alert alert-danger">:message</p>') !!}
+                         </div>
+                           </div>
+                     </div>
                       <div class="form-group">
-                         {!! Form::label('category', 'Video Category', ['class' => 'col-lg-8 control-label'])!!}
                          <div class="form-group">
                             {!! Form::label('headers', 'Headers One:', ['class' => 'col-lg-8 control-label'])!!}
                              <div class="col-lg-12">
@@ -60,12 +68,15 @@
                              </div>
                          </div>
                          <div class="form-group">
-                            <!-- {!! Form::label('text', 'Quiz Name', ['class' => 'form-control'])!!} -->
-                            {!! Form::label('text', 'Headers three:', ['class' => 'col-lg-8 control-label'])!!}
-                            <div class="col-lg-12">
-                                {!!Form::text('title', '', ['class' => 'form-control', 'placeholder' => 'Title'])!!}
-                            </div>
-                        </div>
+                            {!! Form::label('headers', 'Headers three:', ['class' => 'col-lg-8 control-label'])!!}
+                             <div class="col-lg-12">
+                               <select name="countryt" id="countryt" class="form-control">
+                              </select>
+                               @if($errors->has('test_header_3_id'))
+                               <span class="help-block text-danger">{{$errors->first('test_header_1_id')}}</span>
+                               @endif
+                             </div>
+                         </div>
                       </div>
                        <div class="form-group">
                           {!! Form::label('startdate', 'Start Date (Video Visibility Start Date. YYYY-MM-DD HH:ll:SS):', ['class' => 'col-lg-12 control-label'])!!}

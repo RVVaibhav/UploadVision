@@ -122,10 +122,73 @@ catch (Exception $Ex) {
 
 
 
-public function selectQFDatas($table) {
+public function selectAboutDatas($table) {
 try {
      $sql ="SELECT * FROM $table ";
      //echo $sql;
+  //  exit;
+    $result = mysqli_query($this->connection, $sql);
+    //var_dump($result);
+   // exit;
+    return $result;
+}
+catch (Exception $Ex) {
+    echo $Ex;
+}
+}
+
+
+public function selectQFDatas($table) {
+try {
+     $sql ="SELECT * FROM $table";
+     //echo $sql;
+  //  exit;
+    $result = mysqli_query($this->connection, $sql);
+    //var_dump($result);
+   // exit;
+    return $result;
+}
+catch (Exception $Ex) {
+    echo $Ex;
+}
+}
+
+public function selectVisionMnemonics($table) {
+try {
+     $sql ="SELECT * FROM $table";
+     //echo $sql;
+  //  exit;
+    $result = mysqli_query($this->connection, $sql);
+    //var_dump($result);
+   // exit;
+    return $result;
+}
+catch (Exception $Ex) {
+    echo $Ex;
+}
+}
+
+public function selectQFData($table,$type) {
+try {
+     $sql ="SELECT * FROM $table where `question_format`= '$type'";
+    // echo $sql;
+    // exit;
+    $result = mysqli_query($this->connection, $sql);
+    //var_dump($result);
+   // exit;
+    return $result;
+}
+catch (Exception $Ex) {
+    echo $Ex;
+}
+}
+
+
+
+public function getResultData($user_id,$test_id) {
+try {
+     $sql ="select * from result_test_questions where `user_id`='$user_id' and `test_id` = '$test_id';";
+//    echo $sql;
   //  exit;
     $result = mysqli_query($this->connection, $sql);
     //var_dump($result);
@@ -214,7 +277,7 @@ catch (Exception $Ex) {
 
 
 	           //redirect('location:index.php');
-            echo $sql;
+           // echo $sql;
            //  exit;
             $result = mysqli_query($this->connection, $sql);
             if ($result) {
@@ -241,7 +304,7 @@ catch (Exception $Ex) {
 
     public function selectByCategories($table,$name) {
         try {
-           $sql= "select * from $table where `video_cat` ='$name'";
+           $sql= "select * from $table where `headers_three` ='$name'";
           // echo $sql;
           // exit;
              $result = mysqli_query($this->connection, $sql);

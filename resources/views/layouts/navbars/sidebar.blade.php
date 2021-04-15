@@ -136,10 +136,10 @@
           <p>{{ __('Notification') }}</p>
         </a>
       </li>
-      <li class = "@if ($activePage == 'algorithms') active @endif">
-        <a href="{{ url('/algorithms') }}">
+      <li class = "@if ($activePage == 'mnemonics') active @endif">
+        <a href="{{ url('/mnemonics') }}">
           <i class="now-ui-icons business_bulb-63"></i>
-          <p>{{ __('Algorithm') }}</p>
+          <p>{{ __('Mnemonics') }}</p>
         </a>
       </li>
       <li class = "@if ($activePage == 'typography') active @endif">

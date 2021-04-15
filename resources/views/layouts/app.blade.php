@@ -206,6 +206,56 @@
     });
 </script>
 
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('select[name="setting"]').on('change', function() {
+            var statesID = $(this).val();
+            if(statesID) {
+                $.ajax({
+                    url: '/myform/ajaxsIT/'+statesID,
+                    type: "GET",
+                    dataType: "json",
+                    success:function(data) {
+                        $('select[name="four"]').empty();
+                        $.each(data, function(key, value) {
+                            $('select[name="four"]').append('<option value="'+ value.test_header_4_id +'">'+ value.test_header_4 +'</option>');
+                        });
+
+
+                    }
+                });
+            }else{
+                $('select[name="four"]').empty();
+            }
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('select[name="city"]').on('change', function() {
+            var statesID = $(this).val();
+            if(statesID) {
+                $.ajax({
+                    url: '/myform/ajaxsI/'+statesID,
+                    type: "GET",
+                    dataType: "json",
+                    success:function(data) {
+                        $('select[name="three"]').empty();
+                        $.each(data, function(key, value) {
+                            $('select[name="three"]').append('<option value="'+ value.test_header_3_id +'">'+ value.test_header_3 +'</option>');
+                        });
+
+
+                    }
+                });
+            }else{
+                $('select[name="three"]').empty();
+            }
+        });
+    });
+</script>
+
 
   <!--  Google Maps Plugin    -->
   <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>

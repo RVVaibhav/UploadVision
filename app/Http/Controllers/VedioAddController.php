@@ -31,8 +31,12 @@ class VedioAddController extends Controller
        $this->validate($request, [
           'vedioTitle' => 'required',
           'image' => 'required|mimes:mp4,mov,ogg,qt',
+          'thumbimage' => 'required|image|mimes:jpg,png|max:2048',
           'startdate'=> 'required',
           'enddate' => 'required',
+          'country_id'=> 'required',
+          'city' => 'required',
+          'countryt' => 'required',
        ]);
 
        // Handle File Upload
@@ -56,14 +60,36 @@ class VedioAddController extends Controller
          } else {
              $fileNameToStore = 'noimage.jpg';
          }
+         if($request->hasFile('thumbimage')){
+               // Get filename with the extension
+               $cover = $request->file('thumbimage');
+               $extension = $cover->getClientOriginalExtension();
+
+               //$filenameWithExt = $request->file('image')->getClientOriginalName();
+               // Get just filename
+              // $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+               // Get just ext
+               //$extension = $request->file('image')->getClientOriginalExtension();
+               // Filename to store
+               $fileNameToStores= '/uploads/'.'thumb-'.time().'.'.$extension;
+            //   $path = $request->file('image')->storeAs('public/video', $fileNameToStore);
+               Storage::disk('public')->put($fileNameToStore,  File::get($cover));
+               // Upload Image
+              // $path = $request->file('image')->storeAs('public/video', $fileNameToStore);
+               //Storage::disk('public')->put($cover->getFilename().'.'.$extension,  File::get($cover));
+           } else {
+               $fileNameToStores = 'noimage.jpg';
+           }
        $post = new Post;
        $post->title = $request->input('vedioTitle');
        $post->start_date = $request->input('startdate');
        $post->expire_date = $request->input('enddate');
-       $post->video_cat = $request->input('category');
+       $post->headers_one = $request->input('country_id');
+       $post->headers_two = $request->input('city');
+       $post->headers_three = $request->input('countryt');
        $post->admin_id = auth()->user()->id;
-       $post->vedio = $fileNameToStore;
-       $post->thumbimage = $fileNameToStore;
+       $post->video = $fileNameToStore;
+       $post->thumbimage = $fileNameToStores;
        $post->save();
        return redirect('/vedio')->with('success', 'Vedio Created');
    }

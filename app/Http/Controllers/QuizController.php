@@ -35,13 +35,21 @@ class QuizController extends Controller
                         $post->subject_group_id =$request->input('category');
                         $post->question_type = $request->input('question_type');
                         $post->question = $request->input('question');
-                        $post->description = $request->input('description');
+                      //  $post->description = $request->input('description');
                         $post->option_1 = $request->input('option_1');
                         $post->option_2 = $request->input('option_2');
                         $post->option_3 = $request->input('option_3');
                         $post->option_4 = $request->input('option_4');
                         $post->option_5 = "option_5";
-                        $post->correct_option = $request->input('correct');
+                        if($request->radio == '1'){
+                          $post->correct_option = 1;
+                        }elseif ($request->radio == '2')   {
+                          $post->correct_option = 2;
+                        }elseif ($request->radio == '3')   {
+                          $post->correct_option= 3;
+                        }elseif ($request->radio == '4')   {
+                           $post->correct_option = 4;
+                        }
                         $post->admin_id = auth()->user()->id;
                         $post->questions_selection_count = 1;
                         $post->save();

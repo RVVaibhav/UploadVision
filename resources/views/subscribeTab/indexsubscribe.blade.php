@@ -23,7 +23,7 @@
                                      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#samhita" role="tab" aria-controls="profile" aria-selected="false">SAMHITA</a>
                                    </li>
                                    <li class="nav-item">
-                                     <a class="nav-link" id="profile-tab" data-toggle="tab" href="#test_series" role="tab" aria-controls="profile" aria-selected="false">TEST SERISE</a>
+                                     <a class="nav-link" id="profile-tab" data-toggle="tab" href="#test_series" role="tab" aria-controls="profile" aria-selected="false">TEST SERIES</a>
                                    </li>
                                  </ul>
                                  <div class="tab-content" id="myTabContent">
@@ -131,7 +131,6 @@
                                          </button>
                                           {!!Form::close()!!}
                                        </div>
-
                                    </div>
                                    <div class="tab-pane fade my-4" id="test_series" role="tabpanel" aria-labelledby="profile-tab">
                                      {{csrf_field()}}

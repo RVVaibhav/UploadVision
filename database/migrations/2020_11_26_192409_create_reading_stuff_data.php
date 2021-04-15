@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateVideoPost extends Migration
+class CreateReadingStuffData extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,13 @@ class CreateVideoPost extends Migration
      */
     public function up()
     {
-        Schema::create('video_tutorials', function (Blueprint $table) {
+        Schema::create('reading_stuff_data', function (Blueprint $table) {
           $table->increments('id');
-          $table->date('start_date');
-          $table->date('expire_date');
           $table->string('title');
-          $table->string('video_cat');
-          $table->string('vedio');
-          $table->string('thumbimage');
-          $table->string('admin_id');
+          $table->string('description');
+          $table->string('type');
+          $table->string('createdBy');
+          $table->string('attachment');
           $table->timestamps();
         });
     }
@@ -33,6 +31,6 @@ class CreateVideoPost extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('video_tutorials');
+        Schema::dropIfExists('reading_stuff_data');
     }
 }

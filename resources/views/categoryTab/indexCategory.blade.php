@@ -20,7 +20,7 @@
                                      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Test Category</a>
                                    </li>
                                    <li class="nav-item">
-                                     <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Video Category</a>
+                                     <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profiles" role="tab" aria-controls="profile" aria-selected="false">Create Test Group</a>
                                    </li>
                                    <li class="nav-item">
                                      <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Question Category</a>
@@ -38,11 +38,11 @@
                                       {!! Form::submit('Submit', ['class' => 'btn btn-lg btn-info pull-left'] ) !!}
                                       {!!Form::close()!!}
                                    </div>
-                                   <div class="tab-pane fade my-4" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                   <div class="tab-pane fade my-4" id="profiles" role="tabpanel" aria-labelledby="profile-tab">
                                      {{csrf_field()}}
                                      {!! Form::open(['action' => 'CategoriesController@store','method' => 'POST']) !!}
                                      <input name="id" value="2" type="hidden">
-                                     {!!Form::text('video_cat', '', ['class' => 'form-control', 'placeholder' => 'Video Category'])!!}
+                                     {!!Form::text('test_group', '', ['class' => 'form-control', 'placeholder' => 'Test Group'])!!}
                                      {!! Form::submit('Submit', ['class' => 'btn btn-lg btn-info pull-left'] ) !!}
                                      {!!Form::close()!!}
                                    </div>
@@ -61,10 +61,7 @@
                                      {!!Form::text('question_cat_f', '', ['class' => 'form-control', 'placeholder' => 'Question Format Category'])!!}
                                      {!! Form::submit('Submit', ['class' => 'btn btn-lg btn-info pull-left'] ) !!}
                                      {!!Form::close()!!}
-
                                    </div>
-
-
 
                                  </div>
                            </div>

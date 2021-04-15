@@ -29,7 +29,7 @@
                             <select placeholder="Filter" class="form-control" name="question_type" style="height:40px">
                                 <option>Amol Sir</option>
                                 <option>Suraj Sir</option>
-                                <option>Govardhan  Sir</option>
+                                <option>GauriShankar Sir</option>
                             </select>
                               </div>
                             </div>
@@ -58,44 +58,31 @@
                            </div>
                             <div class="form-group">
                               <div class="col-md-12">
-                                <h6 class="quiztitle">Option 1)</h6>
+                                <h6 class="quiztitle">Option 1)</h6><input type="radio" id="administrator" name="radio" value="1">Select Correct Answer
                                 <textarea  name="option_1" class='form-control' ></textarea>
                               </div>
                         </div>
                         <div class="form-group">
                             <div class="col-md-12">
-                            <h6 class="quiztitle">Option 2)</h6>
-
+                            <h6 class="quiztitle">Option 2)</h6><input type="radio" id="administrator" name="radio" value="2">Select Correct Answer
                             <textarea  name="option_2" class='form-control'></textarea>
                         </div>
                         </div>
                         <div class="form-group">
                             <div class="col-md-12">
-                            <h6 class="quiztitle">Option 3)</h6>
+                            <h6 class="quiztitle">Option 3)</h6><input type="radio" id="administrator" name="radio" value="3">Select Correct Answer
 
                             <textarea  name="option_3" class='form-control'></textarea>
                         </div>
                         </div>
                         <div class="form-group">
                             <div class="col-md-12">
-                            <h6 class="quiztitle">Option 4)</h6>
+                            <h6 class="quiztitle">Option 4)</h6><input type="radio" id="administrator" name="radio" value="4">Select Correct Answer
 
                             <textarea  name="option_4" class='form-control'></textarea>
                         </div>
                         </div>
-                        <div class="form-group">
-                           <!-- {!! Form::label('text', 'Quiz Name', ['class' => 'form-control'])!!} -->
-                           {!! Form::label('text', 'Correct Option:', ['class' => 'col-lg-8 control-label'])!!}
-                           <div class="col-lg-12">
-                             <select placeholder="Filter" class="form-control" name="correct" style="height:40px">
-                                 <option>option_1</option>
-                                 <option>option_2</option>
-                                 <option>option_3</option>
-                                 <option>option_4</option>
-                             </select>
-
-                           </div>
-                       </div>
+                      
                         <div class="form-group">
                               <div class="col-lg-12">
                                   {!! Form::submit('Submit', ['class' => 'btn btn-lg btn-info'] ) !!}

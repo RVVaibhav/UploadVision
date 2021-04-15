@@ -15,9 +15,35 @@ class AddTest extends Model{
     * @var array
     */
    protected $fillable = [
-       'testname', 'description','startdate','enddate','duration','allow_max','min_percent','correctScore','incorrect','ip','allow_view','header_one',
-       'header_two','header_three','numQue','totalm'
+
+       'test_header_3_id','test_header_1_id','test_header_2_id','test_header_4_id',
+       'test_category','test_group','test_name','description','duration','start_date',
+       'expire_date','attempt_limit','total_marks','num_questions','correct_score','min_percent',
+       'is_view_correct_answers_allowed','incorrect_score','admin_id'
    ];
+
+   protected $casts = ['test_group' => 'array'];
+
+
+   public function setCategoryAttribute($value){
+
+    $this->attributes['test_group'] = json_encode($value);
+
+}
+
+
+public function getCreatedAtAttribute($value){
+   $date = Carbon::parse($value);
+   return $date->format('Y-m-d');
+}
+
+
+public function getCategoryAttribute($value){
+
+    return $this->attributes['test_group'] = json_decode($value);
+
+}
+
 
    public function user()
    {

@@ -33,6 +33,7 @@ Route::middleware('auth')->group(function() {
     Route::resource('headers', 'HeadersController');
     Route::resource('vedio', 'VedioAddController');
     Route::resource('quiz', 'QuizController');
+    Route::resource('mnemonics', 'MnemonicsController');
     Route::resource('testQuiz', 'TestQuestionController');
     Route::resource('category', 'CategoriesController');
     Route::resource('reading', 'ReadingStuffController');
@@ -65,6 +66,9 @@ Route::middleware('auth')->group(function() {
     Route::get('myform/ajax_state/{id}',array('as'=>'myform.ajax','uses'=>'UserController@myformAjax'));
     Route::get('myform/ajax/{id}',array('as'=>'myform.ajax','uses'=>'TestController@myformAjax'));
     Route::get('myform/ajaxs/{id}',array('as'=>'myform.ajax','uses'=>'TestController@myformAjaxs'));
+      Route::get('myform/ajaxsI/{id}',array('as'=>'myform.ajax','uses'=>'TestController@myformAjaxsI'));
+      Route::get('myform/ajaxsIT/{id}',array('as'=>'myform.ajax','uses'=>'TestController@myformajaxsIT'));
+
     Route::get('/myform/ajax_test/{id}',array('as'=>'myform.ajax','uses'=>'TestQuestionController@myformAjax_test'));
     Route::resource('userposts', 'PostController');
     Route::resource('chat', 'ChatController');

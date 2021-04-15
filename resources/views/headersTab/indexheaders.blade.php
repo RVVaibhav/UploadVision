@@ -35,22 +35,24 @@
                           {!! Form::label('headers', 'Headers Two:', ['class' => 'col-lg-8 control-label'])!!}
                            <div class="col-lg-12">
                              <select name="city" id="country" class="form-control">
-
                             </select>
                              @if($errors->has('test_header_2_id'))
                              <span class="help-block text-danger">{{$errors->first('test_header_1_id')}}</span>
                              @endif
                            </div>
                        </div>
+
                        <div class="form-group">
                           {!! Form::label('headers', 'Headers Three:', ['class' => 'col-lg-8 control-label'])!!}
                            <div class="col-lg-12">
                              <select name="three" id="three" class="form-control">
-                               <option>Ayurved</option>
-                               <option>Modern</option>
                             </select>
+                             @if($errors->has('test_header_2_id'))
+                             <span class="help-block text-danger">{{$errors->first('test_header_1_id')}}</span>
+                             @endif
                            </div>
                        </div>
+
                        <div class="form-group">
                           <!-- {!! Form::label('text', 'Quiz Name', ['class' => 'form-control'])!!} -->
                           {!! Form::label('text', 'Headers three:', ['class' => 'col-lg-8 control-label'])!!}
@@ -75,6 +77,7 @@
                               <th>Header 1</th>
                               <th>Header 2</th>
                               <th>Header 3</th>
+                              <th>Header 4</th>
                               <th>Action</th>
                            </tr>
                            </thead>
@@ -84,7 +87,8 @@
                                 <td>{{$post->test_header_3_id}}</td>
                                 <td>{{$post->headerOne->header_1}}</td>
                                 <td>{{$post->headerTwo->test_header_2}}</td>
-                                <td>{{$post->test_header_3}}</td>
+                                <td>{{$post->headerThree->test_header_3}}</td>
+                                <td>{{$post->test_header_4}}</td>
                                 <td>
                                     <div class="col-auto"><a class="btn btn-info" href="{{ url('/headers'.$post->test_header_3_id) }}" data-hover="tooltip" data-placement="top"
                                           data-target="#addnewgift{{$post->test_header_3_id}}" data-toggle="modal" id="modal-edit" title="Edit"><i

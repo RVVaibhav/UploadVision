@@ -48,12 +48,14 @@ public function index(){
             $this->validate($request, [
                       'country_id' => 'required',
                       'city' => 'required',
+                      'three' => 'required',
                       'title' => 'required',
                    ]);
       	      	$post = AddHeders::findOrFail($id);
                // Handle File Upload
                $post->test_header_1_id = $request->input('country_id');
                $post->test_header_2_id = $request->input('city');
+               $post->test_header_3_id = $request->input('three');
                $post->test_header_3 = $request->input('title');
                $post->save();
 

@@ -14,8 +14,6 @@ $type=$_POST['type'];
             	    $question_format_cat=$row['question_format_cat'];
                   $created_at=$row['created_at'];
             	    $updated_at=$row['updated_at'];
-
-
             	    $huntygo['qt'][] = array('stk' => 'success','id' =>$id,
                  'question_format_cat' =>$question_format_cat,'created_at' =>$created_at,'updated_at' =>$updated_at);
         	 }

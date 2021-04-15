@@ -11,8 +11,10 @@ class Post extends Model{
   protected $table = 'video_tutorials';
   protected $primaryKey = 'id';
 
+
+
   protected $fillable = [
-   'title','vedio','start_date','expire_date','admin_id','thumbimage','video_cat'
+   'title','headers_one','headers_two','headers_three','start_date','expire_date','admin_id','thumbimage'
 
 ];
 

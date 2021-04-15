@@ -7,6 +7,7 @@ use Vision\TestCategory;
 use Vision\VideoCategory;
 use Vision\QuestionCategory;
 use Vision\QuestionFormat;
+use Vision\TestGroup;
 use Illuminate\Support\Facades\DB;
 
 class CategoriesController extends Controller
@@ -41,14 +42,14 @@ class CategoriesController extends Controller
              return redirect('/category')->with('success', 'TestCategory Add Successfully!');
          }else if($tabId == 2) {
            $this->validate($request, [
-                     'video_cat' => 'required',
+                     'test_group' => 'required',
                   ]);
-              $post = new VideoCategory;
-              $post->video_cat = $request->input('video_cat');
+              $post = new TestGroup;
+              $post->test_group = $request->input('test_group');
               $post->admin_id = auth()->user()->id;
               $post->save();
 
-             return redirect('/category')->with('success', 'VideoCategory Add Successfully!');
+             return redirect('/category')->with('success', 'Test Group Add Successfully!');
          }else  if($tabId == 3) {
            $this->validate($request, [
                      'question_cat' => 'required',
@@ -59,7 +60,7 @@ class CategoriesController extends Controller
               $post->save();
 
              return redirect('/category')->with('success', 'QuestionCategory Add Successfully!');
-         }else {
+         }else if($tabId == 4){
            $this->validate($request, [
                      'question_cat_f' => 'required',
                   ]);
@@ -69,6 +70,15 @@ class CategoriesController extends Controller
               $post->save();
 
              return redirect('/category')->with('success', 'QuestionCategory Add Successfully!');
+         }else if($tabId == 5){
+           $this->validate($request, [
+                     'test_group' => 'required',
+                  ]);
+                  $post = new TestGroup;
+                  $post->test_group = $request->input('test_group');
+                  $post->admin_id = auth()->user()->id;
+                  $post->save();
+                 return redirect('/category')->with('success', 'Test Group Add Successfully!');
          }
 
      }

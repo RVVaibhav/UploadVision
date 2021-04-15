@@ -6,15 +6,16 @@ include("Config.php");
 
 $cat_id=$_POST['cat_id'];
 
+
   $result=$con->selectByCategories("video_tutorials",$cat_id);
         if($result==true){
         	     while($row=$result->fetch_assoc()){
             	   $id=$row['id'];
             	   $title=$row['title'];
-            	   $description=$row['description'];
-            	   $category=$row['video_cat'];
+            	   $headers_one=$row['headers_one'];
             	   $image=$row['thumbimage'];
-            	   $amount=$row['amount'];
+            	   $headers_two=$row['headers_two'];
+                 $headers_three=$row['headers_three'];
             	   $user_id=$row['admin_id'];
                  $vedio=$row['vedio'];
                  $start_date=$row['start_date'];

@@ -12,10 +12,13 @@ use Vision\Post;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Vision\PdfPost;
+use Vision\AddTest;
+use Vision\Quiz;
 use PhpOffice\PhpWord\TemplateProcessor;
 use PhpOffice\PhpWord\Shared\Converter;
 use PhpOffice\PhpWord\Style\TablePosition;
 use Vision\testValue;
+use Illuminate\Support\Str;
 
 class DataUploadsController extends Controller{
     /**
@@ -36,25 +39,96 @@ class DataUploadsController extends Controller{
         //   return view('test.indextest',compact('items'));
    }
 
-   public function importFileIntoDB(Request $request){
-     if($request->hasFile('sample_file')){
-     $path = $request->file('sample_file')->getRealPath();
-     $data = \Excel::load($path)->get();
-     if($data->count()){
-         foreach ($data as $key => $value) {
-             $arr[] = ['subject_group_id' =>$request->input('question_type'), 'question_type' => $value->question_type,'question' => $value->question,
-           'option_1' => $value->option_1,'option_2' => $value->option_2,'option_3' => $value->option_3,'option_4' => $value->option_4,'option_5' => $value->option_5,
-         'correct_option' => $value->correct_option,'questions_selection_count' => $value->questions_selection_count,'admin_id' =>auth()->user()->id ,'description' => $value->description];
-         }
-         if(!empty($arr)){
-             DB::table('question_bank')->insert($arr);
-             DB::table('question_b_test')->insert($arr);
-             dd('Insert Record successfully.');
-         }
-     }
- }
+
+  public function importFileIntoDB(Request $request){
+    if($request->hasFile('sample_file')){
+    $path = $request->file('sample_file')->getRealPath();
+    $data = \Excel::load($path)->get();
+    $rowcount = 0;
+    $de_test_id;
+    $de_ques_id;
+    if($data->count()){
+        foreach ($data as $key => $value) {
+          if($rowcount == 0){
+          $rowcount = 1;
+          $post = new AddTest;
+          $post->test_header_3_id=$value->test_header_3_id;
+          $post->test_header_1_id=$value->test_header_1_id;
+          $post->test_header_2_id=$value->test_header_2_id;
+          $post->test_header_4_id=$value->test_header_4_id;
+          $post->test_category=$value->test_category;
+          $post->test_group=$value->test_group;
+          $post->test_name=$value->test_name;
+          $post->description=$value->description;
+          $post->duration=$value->duration;
+          $post->start_date=$value->start_date;
+          $post->expire_date=$value->expire_date;
+          $post->attempt_limit=$value->attempt_limit;
+          $post->updated_at=$value->updated_at;
+          $post->total_marks=$value->total_marks;
+          $post->num_questions=$value->num_questions;
+          $post->correct_score=$value->correct_score;
+          $post->min_percent=$value->min_percent;
+          $post->is_view_correct_answers_allowed=$value->is_view_correct_answers_allowed;
+          $post->incorrect_score=$value->incorrect_score;
+          $post->admin_id=auth()->user()->id;
+          if($post->save()) {
+            $de_test_id =$post->test_id;
+           }
+
+      }//else {
+     $post = new Questions;
+     $post->subject_group_id=$value->subject_group_id;
+     $post->question_type=$value->question_type;
+     $post->question=$value->question;
+     $post->option_1=$value->option_1;
+     $post->option_2=$value->option_2;
+     $post->option_3=$value->option_3;
+     $post->option_4=$value->option_4;
+     $post->option_5=$value->option_5;
+     $post->correct_option=$value->correct_option;
+     $post->questions_selection_count=$value->questions_selection_count;
+     $post->admin_id=$value->admin_id;
+     if($post->subject_group_id && $post->save()) {
+       $de_ques_id =$post->question_id;
+       $post = new Quiz;
+       $post->test_id=$de_test_id;
+       $post->question_id=$de_ques_id;
+       $post->save();
+      }
+
+  //}
+
+
+  }
+
+    }
+ }else {
  dd('Request data does not have any files to import.');
  }
+
+
+ }
+
+ public function importFileIntoDBS(Request $request){
+   if($request->hasFile('sample_file')){
+   $path = $request->file('sample_file')->getRealPath();
+   $data = \Excel::load($path)->get();
+   if($data->count()){
+       foreach ($data as $key => $value) {
+           $arr[] = ['subject_group_id' =>$request->input('question_type'), 'question_type' => $value->question_type,'question' => $value->question,
+         'option_1' => $value->option_1,'option_2' => $value->option_2,'option_3' => $value->option_3,'option_4' => $value->option_4,'option_5' => $value->option_5,
+       'correct_option' => $value->correct_option,'questions_selection_count' => $value->questions_selection_count,'admin_id' =>auth()->user()->id ,'description' => $value->description];
+       }
+       if(!empty($arr)){
+           DB::table('question_bank')->insert($arr);
+           DB::table('question_b_test')->insert($arr);
+           dd('Insert Record successfully.');
+       }
+   }
+}
+dd('Request data does not have any files to import.');
+}
 
  public function downloadExcelFile($type){
     $products = Questions::get()->toArray();

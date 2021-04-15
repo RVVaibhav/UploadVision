@@ -16,97 +16,37 @@ class HeadersSeedT extends Seeder
       DB::table('test_header_3')->insert([[
           'test_header_1_id' => '4',
           'test_header_2_id'=> '1',
-          'test_header_3'=> 'Ayurved',
+          'test_header_3'=> 'AYURVED',
           'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
           'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-      ],  DB::table('test_header_3')->insert([[
-            'test_header_1_id' => '4',
+      ],[
+          'test_header_1_id' => '4',
             'test_header_2_id'=> '1',
             'test_header_3'=> 'Modern',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-        ],[
-          'test_header_1_id' => '4',
-            'test_header_2_id'=> '1',
-            'test_header_3'=> 'Sharir Kriya',
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
       ],[
           'test_header_1_id' => '4',
-            'test_header_2_id'=> '1',
-            'test_header_3'=> 'Sanskrit',
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-      ],[
-          'test_header_1_id' => '4',
-            'test_header_2_id'=> '1',
-            'test_header_3'=> 'Padartha Vigyan',
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-      ],[
-          'test_header_1_id' => '4',
-            'test_header_2_id'=> '1',
-            'test_header_3'=> 'Ayurved Itihas',
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-      ],[
-            'test_header_1_id' => '4',
-            'test_header_2_id'=> '1',
-            'test_header_3'=> 'Vagbhat Su.',
+            'test_header_2_id'=> '2',
+            'test_header_3'=> 'AYURVED',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
       ],[
           'test_header_1_id' => '4',
             'test_header_2_id'=> '2',
-            'test_header_3'=> 'Rasshastra',
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-      ],[
-          'test_header_1_id' => '4',
-            'test_header_2_id'=> '2',
-            'test_header_3'=> 'Agadtantra',
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-      ],[
-          'test_header_1_id' => '4',
-            'test_header_2_id'=> '2',
-            'test_header_3'=> 'Dravyagun',
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-      ],[
-          'test_header_1_id' => '4',
-            'test_header_2_id'=> '2',
-            'test_header_3'=> 'Rognidan',
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-      ],[
-          'test_header_1_id' => '4',
-            'test_header_2_id'=> '2',
-            'test_header_3'=> 'Charak Purwardha',
+            'test_header_3'=> 'Modern',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
       ],[
           'test_header_1_id' => '4',
             'test_header_2_id'=> '3',//, , ,
-            'test_header_3'=> 'Swasthavrutta',
+            'test_header_3'=> 'AYURVED',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
       ],[
           'test_header_1_id' => '4',
             'test_header_2_id'=> '3',
-            'test_header_3'=> 'Streerog',
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-      ],[
-          'test_header_1_id' => '4',
-            'test_header_2_id'=> '3',
-            'test_header_3'=> 'Balrog',
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-      ],[
-          'test_header_1_id' => '4',
-            'test_header_2_id'=> '3',
-            'test_header_3'=> 'Charak Uttarardha',
+            'test_header_3'=> 'Modern',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
       ],[
@@ -118,241 +58,109 @@ class HeadersSeedT extends Seeder
       ],[
           'test_header_1_id' => '4',
             'test_header_2_id'=> '4',
-            'test_header_3'=> 'shalakya',
+            'test_header_3'=> 'AYURVED',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
       ],[
           'test_header_1_id' => '4',
             'test_header_2_id'=> '4',
-            'test_header_3'=> 'Panchkarma',
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-      ],[
-          'test_header_1_id' => '4',
-            'test_header_2_id'=> '4',
-            'test_header_3'=> 'Kaychikitsa',
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-      ],[
-          'test_header_1_id' => '4',
-            'test_header_2_id'=> '4',
-            'test_header_3'=> 'Research & Statistics',
+            'test_header_3'=> 'Modern',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
       ],[
           'test_header_1_id' => '5',
             'test_header_2_id'=> '5',
-            'test_header_3'=> 'Sutrasthan',
+            'test_header_3'=> 'sthan',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
       ],[
           'test_header_1_id' => '5',
             'test_header_2_id'=> '5',
-            'test_header_3'=> 'Nidansthan',
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-      ],[
-          'test_header_1_id' => '5',
-            'test_header_2_id'=> '5',
-            'test_header_3'=> 'Vimansthan',
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-      ],[
-          'test_header_1_id' => '5',
-            'test_header_2_id'=> '5',
-            'test_header_3'=> 'Sharirsthan',
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-      ],[
-          'test_header_1_id' => '5',
-            'test_header_2_id'=> '5',
-            'test_header_3'=> 'Indriyasthan',
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-      ],[
-          'test_header_1_id' => '5',
-            'test_header_2_id'=> '5',
-            'test_header_3'=> 'Chikitsasthan',
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-      ],[
-          'test_header_1_id' => '5',
-            'test_header_2_id'=> '5',
-            'test_header_3'=> 'kalpasthan',
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-      ],[
-          'test_header_1_id' => '5',
-            'test_header_2_id'=> '5',
-            'test_header_3'=> 'Siddhisthan',
+            'test_header_3'=> 'mega Test',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
       ],[
           'test_header_1_id' => '5',
             'test_header_2_id'=> '6',
-            'test_header_3'=> 'Sutrasthan',
+            'test_header_3'=> 'sthan',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
       ],[
           'test_header_1_id' => '5',
             'test_header_2_id'=> '6',
-            'test_header_3'=> 'Nidansthan',
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-      ],[
-          'test_header_1_id' => '5',
-            'test_header_2_id'=> '6',
-            'test_header_3'=> 'Sharirsthan',
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-      ],[
-          'test_header_1_id' => '5',
-            'test_header_2_id'=> '6',
-            'test_header_3'=> 'Chikitsasthan',
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-      ],[
-          'test_header_1_id' => '5',
-            'test_header_2_id'=> '6',
-            'test_header_3'=> 'kalpasthan',
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-      ],[
-          'test_header_1_id' => '5',
-            'test_header_2_id'=> '6',
-            'test_header_3'=> 'Uttartantra',
+            'test_header_3'=> 'mega Test',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
       ],[
           'test_header_1_id' => '5',
             'test_header_2_id'=> '7',
-            'test_header_3'=> 'Sutrasthan',
+            'test_header_3'=> 'sthan',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
       ],[
           'test_header_1_id' => '5',
             'test_header_2_id'=> '7',
-            'test_header_3'=> 'Nidansthan',
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-      ],[
-          'test_header_1_id' => '5',
-            'test_header_2_id'=> '7',
-            'test_header_3'=> 'Sharirsthan',
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-      ],[
-          'test_header_1_id' => '5',
-            'test_header_2_id'=> '7',
-            'test_header_3'=> 'Chikitsasthan',
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-      ],[
-          'test_header_1_id' => '5',
-            'test_header_2_id'=> '7',
-            'test_header_3'=> 'kalpasthan',
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-      ],[
-          'test_header_1_id' => '5',
-            'test_header_2_id'=> '7',
-            'test_header_3'=> 'Uttartarsthan',
+            'test_header_3'=> 'mega Test',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
       ],[
           'test_header_1_id' => '5',
             'test_header_2_id'=> '8',
-            'test_header_3'=> 'Sharangdhar',
+            'test_header_3'=> 'sthan',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
       ],[
           'test_header_1_id' => '5',
             'test_header_2_id'=> '8',
-            'test_header_3'=> 'Bhavprakash',
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-      ],[
-          'test_header_1_id' => '5',
-            'test_header_2_id'=> '8',
-            'test_header_3'=> 'Hareet',//
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-      ],[
-            'test_header_1_id' => '5',
-            'test_header_2_id'=> '8',
-            'test_header_3'=> 'Kashyap',//Kashyap
+            'test_header_3'=> 'mega Test',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
       ],[
           'test_header_1_id' => '6',
             'test_header_2_id'=> '9',
-            'test_header_3'=> 'Anatomy',//Kashyap
+            'test_header_3'=> 'sthan',//Kashyap
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
       ],[
            'test_header_1_id' => '6',
             'test_header_2_id'=> '9',
-            'test_header_3'=> 'Physiology',//Kashyap
+            'test_header_3'=> 'mega Test',//Kashyap
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
       ],[
           'test_header_1_id' => '6',
             'test_header_2_id'=> '10',
-            'test_header_3'=> 'Pharmacology',
+            'test_header_3'=> 'sthan',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
       ],[
            'test_header_1_id' => '6',
             'test_header_2_id'=> '10',
-            'test_header_3'=> 'Toxicology',
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-      ],[
-           'test_header_1_id' => '6',
-            'test_header_2_id'=> '10',
-            'test_header_3'=> 'Forensic Medicine',
+            'test_header_3'=> 'mega Test',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
       ],[
           'test_header_1_id' => '6',
             'test_header_2_id'=> '11',
-            'test_header_3'=> 'Gynecology',//Kashyap
+            'test_header_3'=> 'sthan',//Kashyap
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
       ],[
           'test_header_1_id' => '6',
             'test_header_2_id'=> '11',
-            'test_header_3'=> 'Obstetric',//Kashyap
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-      ],[
-          'test_header_1_id' => '6',
-            'test_header_2_id'=> '11',
-            'test_header_3'=> 'Pediatrics',//Kashyap
+            'test_header_3'=> 'mega Test',//Kashyap
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
       ],[
           'test_header_1_id' => '6',
             'test_header_2_id'=> '12',
-            'test_header_3'=> 'Surgery',//, , ,
+            'test_header_3'=> 'sthan',//, , ,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
       ],[
           'test_header_1_id' => '6',
             'test_header_2_id'=> '12',
-            'test_header_3'=> 'ENT',//Kashyap
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-      ],[
-          'test_header_1_id' => '6',
-            'test_header_2_id'=> '12',
-            'test_header_3'=> 'Ophthalmology',//Kashyap
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-      ],[
-           'test_header_1_id' => '6',
-            'test_header_2_id'=> '12',
-            'test_header_3'=> 'Medicine',//Kashyap
+            'test_header_3'=> 'mega Test',//Kashyap
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
       ]]);

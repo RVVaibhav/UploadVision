@@ -9,6 +9,7 @@ use Log;
 use Vision\Headers;
 use Illuminate\Support\Facades\DB;
 use Vision\AddTest;
+use Carbon\Carbon;
 
 class TestController extends Controller{
 
@@ -21,6 +22,27 @@ class TestController extends Controller{
 
  public function store(Request $request) {
 
+   $this->validate($request, [
+             'testgroup' => 'required',
+             'testname' => 'required',
+             'description' => 'required',
+             'startdate' => 'required',
+             'enddate' => 'required',
+             'duration' => 'required',
+             'allow_max' => 'required',
+             'min_percent' => 'required',
+             'correctScore' => 'required',
+             'incorrect' => 'required',
+             'category' => 'required',
+             'country_id' => 'required',
+             'incorrect' => 'required',
+             'category' => 'required',
+             'country_id' => 'required',
+             'city' => 'required',
+             'setting' => 'required',
+          ]);
+
+
 
                   $post = new AddTest;
                   if($request->radio == 'YES'){
@@ -28,11 +50,7 @@ class TestController extends Controller{
                   }elseif ($request->radio == 'NO')   {
                     $post->is_view_correct_answers_allowed = 0;
                   }
-                  if($request->radios == 'Paid'){
-                    $post->test_group = 1;
-                  }elseif ($request->radios == 'Free')   {
-                    $post->test_group = 0;
-                  }
+                  $post->test_group = $request->input('testgroup');
                 //  $post->is_view_correct_answers_allowed = $post->allow_view;
                   $post->test_name = $request->input('testname');
                   $post->description = $request->input('description');
@@ -45,17 +63,25 @@ class TestController extends Controller{
                   $post->incorrect_score = $request->input('incorrect');
                   $post->test_category = $request->input('category');
                   $post->admin_id = auth()->user()->id;
-                  $post->total_marks = $request->input('totalm');
-                  $post->num_questions = $request->input('numQue');
+                  $post->total_marks ="1";
+                  $post->num_questions = "0";
                   $post->test_header_1_id = $request->input('country_id');
                   $post->test_header_2_id = $request->input('city');
                   $post->test_header_3_id = $request->input('setting');
                   $post->test_header_4_id = $request->input('setting');
                   $post->save();
-                  return redirect('/test')->with('success', 'Test Created');
+                  return redirect()->route('/test',$post);
+                //  return redirect('/test.edit')->with('success', 'Test Created');
 
 
      }
+
+
+     public function getCreatedAtAttribute($value){
+        $date = Carbon::parse($value);
+        return $date->format('Y-m-d');
+    }
+
 
 
 
@@ -63,7 +89,8 @@ class TestController extends Controller{
 //    Country::all()->pluck('name', 'id')
      $category = DB::table('test_category')->pluck('test_cat','id');
      $items = DB::table('test_header_1')->pluck('header_1','test_header_1_id');
-     return view('test.indextest',compact('items','category'));
+     $testgroup = DB::table('vision_group_test')->pluck('test_group','id');
+     return view('test.indextest',compact('items','category','testgroup'));
  }
 
    public function myformAjax($id){
@@ -79,6 +106,23 @@ class TestController extends Controller{
                    ->get();
        return json_encode($cities);
    }
+
+   public function myformAjaxsI($id){
+       $cities = DB::table("test_header_3")
+                   ->where("test_header_2_id",$id)
+                   ->get();
+       return json_encode($cities);
+   }
+
+
+   public function myformajaxsIT($id){
+       $cities = DB::table("test_header_4")
+                   ->where("test_header_2_id",$id)
+                   ->get();
+       return json_encode($cities);
+   }
+
+
 
 
 
