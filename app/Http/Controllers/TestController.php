@@ -5,6 +5,8 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Auth;
 use Storage;
+use Vision\Questions;
+use Vision\Quiz;
 use Log;
 use Vision\Headers;
 use Illuminate\Support\Facades\DB;
@@ -69,12 +71,53 @@ class TestController extends Controller{
                   $post->test_header_2_id = $request->input('city');
                   $post->test_header_3_id = $request->input('setting');
                   $post->test_header_4_id = $request->input('setting');
-                  $post->save();
-                  return redirect()->route('/test',$post);
+                  if ($post->save()) {
+                        $category = DB::table('test_category')->pluck('test_cat','id');
+                        $items = DB::table('test_header_1')->pluck('header_1','test_header_1_id');
+                        $testgroup = DB::table('vision_group_test')->pluck('test_group','id');
+                        $posts = Questions::orderBy('created_at','desc')->paginate(60);
+                      //  dd($post->test_id);
+                        $gift =DB::table('test_details')->where('test_id', '=', $post->test_id)->get();
+                        //DB::table('test_details')->select('name', 'email as user_email')->get()//AddTest::where('test_id', $post->test_id)->first(); //AddTest::firstOrFail()->where('test_id', $post->test_id);
+
+
+                        return view('test.edit', compact('gift','items','category','testgroup','posts','post'));
+
+                //  return Response::json(array('success' => true,'inserted_id'=>$data->id), 200);
+                   }
+                //  $post->save();
+                //  $invoice = $post->test_id;
+
+                //    $gift = Gift::findOrFail($id);
+                //  dd($post->test_id);
+//
                 //  return redirect('/test.edit')->with('success', 'Test Created');
-
-
      }
+
+
+ public function multipleInsert(Request $request) {
+   $data = $request->except('_token');
+   $subject_count = count($data['subject_id']);
+   $co;
+   for($i=0; $i < $subject_count; $i++){
+     $tss = new Quiz;
+     $tss->question_id = $data['subject_id'][$i];
+     $tss->test_id = $data['student_id'];
+     $tss->save();
+   }
+
+   $gift =DB::table('test_details')->where('test_id', '=', $data['student_id'])->get();
+   foreach ($gift as $p) {
+    $co =$p->correct_score;
+    }
+
+   DB::table('test_details')->update([
+                   'num_questions' => $subject_count,
+                   'total_marks' => $co * $subject_count,
+               ]);
+               return back()->withInput();
+
+ }
 
 
      public function getCreatedAtAttribute($value){
@@ -121,6 +164,19 @@ class TestController extends Controller{
                    ->get();
        return json_encode($cities);
    }
+
+
+
+
+
+
+
+
+/**
+ * Show the application dashboard.
+ *
+ * @return \Illuminate\Http\Response
+ */
 
 
 

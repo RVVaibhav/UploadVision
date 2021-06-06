@@ -16,8 +16,7 @@
                        {{csrf_field()}}
                          <div class="row">
                            <div class="container border">
-
-                               <div class="row" style="margin-top:20px;">
+                               <div class="row">
                                    <h4 class="px-3">Generate Report</h4>
                                    <div class="container">
                                        <div class="row">
@@ -50,9 +49,6 @@
                                            </div>
                                        </div>
                                    </div>
-
-
-
                                    <h4 class="p-3">Result List</h4>
                                    <div class="container">
                                        <div class="row">

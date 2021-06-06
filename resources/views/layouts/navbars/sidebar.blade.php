@@ -50,6 +50,19 @@
           <p>{{ __('Users') }}</p>
         </a>
       </li>
+      <li class = "@if ($activePage == 'ambiguity') active @endif">
+        <a href="{{ url('/ambiguity') }}">
+          <i class="now-ui-icons users_single-02"></i>
+          <p>{{ __('Ambiguity') }}</p>
+        </a>
+      </li>
+
+      <li class = "@if ($activePage == 'mkcl') active @endif">
+        <a href="{{ url('/mkcl') }}">
+          <i class="now-ui-icons users_single-02"></i>
+          <p>{{ __('Mkcl') }}</p>
+        </a>
+      </li>
       <li class = " @if ($activePage == 'headers') active @endif">
         <a href="{{ url('/headers') }}">
           <i class="now-ui-icons ui-2_chat-round"></i>
@@ -130,9 +143,9 @@
           <p>{{ __('Video') }}</p>
         </a>
       </li>
-      <li class = "@if ($activePage == 'typography') active @endif">
-        <a href="">
-          <i class="now-ui-icons ui-1_bell-53"></i>
+      <li class = "@if ($activePage == 'notification') active @endif">
+        <a href="{{ url('/notification') }}">
+          <i class="now-ui-icons text_caps-small"></i>
           <p>{{ __('Notification') }}</p>
         </a>
       </li>

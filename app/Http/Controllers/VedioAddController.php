@@ -36,7 +36,8 @@ class VedioAddController extends Controller
           'enddate' => 'required',
           'country_id'=> 'required',
           'city' => 'required',
-          'countryt' => 'required',
+          'setting' => 'required',
+          'four' => 'required',
        ]);
 
        // Handle File Upload
@@ -86,7 +87,8 @@ class VedioAddController extends Controller
        $post->expire_date = $request->input('enddate');
        $post->headers_one = $request->input('country_id');
        $post->headers_two = $request->input('city');
-       $post->headers_three = $request->input('countryt');
+       $post->headers_three = $request->input('setting');
+       $post->headers_four = $request->input('four');
        $post->admin_id = auth()->user()->id;
        $post->video = $fileNameToStore;
        $post->thumbimage = $fileNameToStores;

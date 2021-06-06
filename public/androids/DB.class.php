@@ -183,6 +183,23 @@ catch (Exception $Ex) {
 }
 }
 
+public function getAttandance($table,$type) {
+try {
+     $sql ="SELECT count(distinct user_id) as counts FROM $table where `test_id`= '$type'";
+    // echo $sql;
+    // exit;
+    $result = mysqli_query($this->connection, $sql);
+    //var_dump($result);
+   // exit;
+    return $result;
+}
+catch (Exception $Ex) {
+    echo $Ex;
+}
+}
+
+
+
 
 
 public function getResultData($user_id,$test_id) {
@@ -378,7 +395,7 @@ public function selectBystatus($table) {
             //$f= Where $f='$v'
             try {
                $sql = "select * from $table";
-               //echo $sql;
+               echo $sql;
                //exit;
                 $result = mysqli_query($this->connection, $sql);
                return $result;
@@ -394,7 +411,7 @@ public function selectBystatus($table) {
 
                   //$f= Where $f='$v'
                   try {
-                     $sql = "select * from $table where `test_header_3_id` ='$cat_id'";
+                     $sql = "select * from $table where `test_header_4_id` ='$cat_id'";
                     // echo $sql;
         //(select question_id from loot_cutieadmin.questions_in_test where test_id ='$test_id')
                     // exit;
@@ -413,10 +430,10 @@ public function selectQuestions($table_one,$table_two,$test_id) {
           try {
              $sql = "select qb.question_id,qb.subject_group_id,qb.question_type,qb.question,qb.option_1,qb.option_2,qb.option_3,qb.option_4,qb.option_5,
 qb.correct_option,qb.questions_selection_count,qb.admin_id,qb.created_at,qb.updated_at FROM $table_one qb JOIN
-$table_two qt ON qb.question_id = qt.question_id;";
-           //  echo $sql;
+$table_two qt ON qb.question_id = qt.question_id where test_id ='$test_id';";
+            // echo $sql;
 //(select question_id from loot_cutieadmin.questions_in_test where test_id ='$test_id')
-            // exit;
+           //  exit;
               $result = mysqli_query($this->connection, $sql);
              return $result;
          }

@@ -41,42 +41,51 @@
                            </div>
                      </div>
                       <div class="form-group">
-                         <div class="form-group">
-                            {!! Form::label('headers', 'Headers One:', ['class' => 'col-lg-8 control-label'])!!}
-                             <div class="col-lg-12">
-                               <select name="country_id" id="country" class="form-control">
-                                  @foreach($items as $id => $country)
-                                      <option value="{{ $id }}">
-                                          {{ $country }}
-                                      </option>
-                                  @endforeach
-                              </select>
-                               @if($errors->has('test_header_1_id'))
-                               <span class="help-block text-danger">{{$errors->first('test_header_1_id')}}</span>
-                               @endif
-                             </div>
-                         </div>
-                         <div class="form-group">
-                            {!! Form::label('headers', 'Headers Two:', ['class' => 'col-lg-8 control-label'])!!}
-                             <div class="col-lg-12">
-                               <select name="city" id="country" class="form-control">
-
-                              </select>
-                               @if($errors->has('test_header_2_id'))
-                               <span class="help-block text-danger">{{$errors->first('test_header_1_id')}}</span>
-                               @endif
-                             </div>
-                         </div>
-                         <div class="form-group">
-                            {!! Form::label('headers', 'Headers three:', ['class' => 'col-lg-8 control-label'])!!}
-                             <div class="col-lg-12">
-                               <select name="countryt" id="countryt" class="form-control">
-                              </select>
-                               @if($errors->has('test_header_3_id'))
-                               <span class="help-block text-danger">{{$errors->first('test_header_1_id')}}</span>
-                               @endif
-                             </div>
-                         </div>
+                        <div class="form-group">
+                           {!! Form::label('headers', 'Headers One:', ['class' => 'col-lg-8 control-label'])!!}
+                            <div class="col-lg-12">
+                              <select name="country_id" id="country" class="form-control">
+                                 @foreach($items as $id => $country)
+                                     <option value="{{ $id }}">
+                                         {{ $country }}
+                                     </option>
+                                 @endforeach
+                             </select>
+                              @if($errors->has('test_header_1_id'))
+                              <span class="help-block text-danger">{{$errors->first('test_header_1_id')}}</span>
+                              @endif
+                            </div>
+                        </div>
+                        <div class="form-group">
+                           {!! Form::label('headers', 'Headers Two:', ['class' => 'col-lg-8 control-label'])!!}
+                            <div class="col-lg-12">
+                              <select name="city" id="country" class="form-control">
+                             </select>
+                              @if($errors->has('test_header_2_id'))
+                              <span class="help-block text-danger">{{$errors->first('test_header_1_id')}}</span>
+                              @endif
+                            </div>
+                        </div>
+                        <div class="form-group">
+                           {!! Form::label('headers', 'Headers Three:', ['class' => 'col-lg-8 control-label'])!!}
+                            <div class="col-lg-12">
+                              <select name="setting" id="country" class="form-control">
+                             </select>
+                              @if($errors->has('test_header_3_id'))
+                              <span class="help-block text-danger">{{$errors->first('test_header_3_id')}}</span>
+                              @endif
+                            </div>
+                        </div>
+                        <div class="form-group">
+                           {!! Form::label('headers', 'Headers Four:', ['class' => 'col-lg-8 control-label'])!!}
+                            <div class="col-lg-12">
+                              <select name="four" id="four" class="form-control">
+                             </select>
+                              @if($errors->has('test_header_3_id'))
+                              <span class="help-block text-danger">{{$errors->first('test_header_3_id')}}</span>
+                              @endif
+                            </div>
+                        </div>
                       </div>
                        <div class="form-group">
                           {!! Form::label('startdate', 'Start Date (Video Visibility Start Date. YYYY-MM-DD HH:ll:SS):', ['class' => 'col-lg-12 control-label'])!!}
@@ -115,7 +124,7 @@
                           <tr>
                             <td>{{$post->id}}</td>
                             <td>{{$post->title}}</td>
-                            <td><iframe src="{{url('storage/'.$post->vedio)}}"width="60%" height="80"></iframe></td>
+                            <td><iframe src="{{url('/storage/'.$post->vedio)}}"width="60%" height="80"></iframe></td>
                             <td>{{$post->created_at}}</td>
                             <td>
                                 <div class="col-auto"><a class="btn btn-info" href="{{ url('/vedio'.$post->id) }}" data-hover="tooltip" data-placement="top"

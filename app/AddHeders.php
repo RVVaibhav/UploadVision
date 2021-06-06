@@ -18,12 +18,12 @@ class AddHeders extends Model
 
 
       protected $fillable = [
-          'test_header_1_id', 'test_header_2_id','test_header_3_id','test_header_4'
+          'test_header_1_id','test_header_2_id','test_header_3_id','test_header_4'
       ];
 
 
     public function headerOne() {
-       return $this->belongsTo('Vision\HeaderOne', 'test_header_1_id');
+       return $this->belongsTo('Vision\HeaderOne','test_header_1_id');
      }
 
 

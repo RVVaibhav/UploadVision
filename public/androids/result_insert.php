@@ -15,8 +15,9 @@ date_default_timezone_set('Asia/Kolkata');
         $fields=array('user_id','test_id','is_attempted','question_id','selected_option','is_tagged','created_at','updated_at');
         $values=array($user_id,$test_id,$is_attempted,$question_id,$selected_option,$is_tagged,$created_at,$updated_at);
         $result_insert=$con->insertResult('result_test_questions',$fields,$values);
-      //	echo $result_insert  ; exit;
-   if($result_insert){
+      //	echo $result_insert  ; //exit;
+    if($result_insert){
+
      $result=$con->getResultData($user_id,$test_id);
      $cnt=mysqli_num_rows($result);
     if($cnt > 0){
@@ -30,8 +31,23 @@ date_default_timezone_set('Asia/Kolkata');
             $is_tagged=$row['is_tagged'];
                   //$otp=$row['otp'];
       }
-        $profile['ResultData'][] = array('stk' => 'success','result_id' =>$result_id,'user_id' =>$user_id,
-       'test_id'=>$test_id,'question_id'=>$question_id,'is_attempted'=>$is_attempted,'selected_option'=>$selected_option,'is_tagged'=>$is_tagged,'Code' => '200');
+
+      $array = [
+                       "ResultData"=> [array(
+                         'result_id' =>$result_id,
+                         'user_id' =>$user_id,
+                        'test_id'=>$test_id,
+                        'question_id'=>$question_id,
+                        'is_attempted'=>$is_attempted,
+                        'selected_option'=>$selected_option,
+                        'is_tagged'=>$is_tagged)
+
+
+                           ],
+                       'stk' => 'success',
+                       'Code' => '200'
+                   ];
+        $profile = $array;
      }
 
 	   }else {

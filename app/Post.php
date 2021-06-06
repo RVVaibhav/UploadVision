@@ -14,7 +14,7 @@ class Post extends Model{
 
 
   protected $fillable = [
-   'title','headers_one','headers_two','headers_three','start_date','expire_date','admin_id','thumbimage'
+   'title','headers_one','headers_two','headers_three','headers_four','start_date','expire_date','admin_id','thumbimage'
 
 ];
 

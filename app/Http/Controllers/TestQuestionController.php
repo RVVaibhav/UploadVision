@@ -22,7 +22,7 @@ class TestQuestionController extends Controller
     public function index(){
       //    Country::all()->pluck('name', 'id')
       $items = DB::table('test_details')->pluck('test_name','test_id');
-      $posts = Questions::orderBy('created_at','desc')->paginate(10);
+      $posts = Questions::orderBy('created_at','desc')->paginate(60);
       return view('testQuiz.indexTestQuiz',compact('posts','items'));
         //   return view('test.indextest',compact('items'));
        }

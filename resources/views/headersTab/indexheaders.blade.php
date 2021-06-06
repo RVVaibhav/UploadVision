@@ -90,8 +90,8 @@
                                 <td>{{$post->headerThree->test_header_3}}</td>
                                 <td>{{$post->test_header_4}}</td>
                                 <td>
-                                    <div class="col-auto"><a class="btn btn-info" href="{{ url('/headers'.$post->test_header_3_id) }}" data-hover="tooltip" data-placement="top"
-                                          data-target="#addnewgift{{$post->test_header_3_id}}" data-toggle="modal" id="modal-edit" title="Edit"><i
+                                    <div class="col-auto"><a class="btn btn-info" href="{{ url('/headers'.$post->test_header_4_id) }}" data-hover="tooltip" data-placement="top"
+                                          data-target="#addnewgift{{$post->test_header_4_id}}" data-toggle="modal" id="modal-edit" title="Edit"><i
                                               class="fa fa-fw fa-edit"></i></a>
                                               {!!Form::open(['action' => ['HeadersController@destroy', $post->test_header_3_id], 'method' => 'POST', 'class' => 'pull-right'])!!}
                                                {!!Form::hidden('_method', 'DELETE')!!}
@@ -102,7 +102,7 @@
                                   </div>
                                 </td>
                               </tr>
-                              <div class="modal fade" id="addnewgift{{$post->test_header_3_id}}" tabindex="-1" role="dialog" aria-labelledby="editTitle" aria-hidden="true">
+                              <div class="modal fade" id="addnewgift{{$post->test_header_4_id}}" tabindex="-1" role="dialog" aria-labelledby="editTitle" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                   <div class="modal-content">
                                     <div class="modal-header">
@@ -118,7 +118,7 @@
                                           <div class="col-md-6">
                                             <div class="container mt-2">
                                               <div class="row">
-                                                {!! Form::open(['action' => ['HeadersController@update', $post->test_header_3_id], 'method' => 'POST']) !!}
+                                                {!! Form::open(['action' => ['HeadersController@update', $post->test_header_4_id], 'method' => 'POST']) !!}
                                                   <div class="col">
                                                     {!! Form::label('headers', 'Headers One:', ['class' => 'col-lg-8 control-label'])!!}
                                                      <div class="col-lg-12">
@@ -144,7 +144,21 @@
                                                        <select name="city" id="country" class="form-control">
                                                       </select>
                                                        @if($errors->has('test_header_2_id'))
-                                                       <span class="help-block text-danger">{{$errors->first('test_header_1_id')}}</span>
+                                                       <span class="help-block text-danger">{{$errors->first('test_header_3_id')}}</span>
+                                                       @endif
+                                                     </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div class="container mt-2">
+                                              <div class="row">
+                                                  <div class="col">
+                                                    {!! Form::label('headers', 'Headers Three:', ['class' => 'col-lg-8 control-label'])!!}
+                                                     <div class="col-lg-12">
+                                                       <select name="three" id="three" class="form-control">
+                                                      </select>
+                                                       @if($errors->has('test_header_3_id'))
+                                                       <span class="help-block text-danger">{{$errors->first('test_header_3_id')}}</span>
                                                        @endif
                                                      </div>
                                                   </div>
@@ -153,13 +167,14 @@
                                           <div class="container mt-2">
                                               <div class="row">
                                                 <div class="col">
-                                                  {!! Form::label('headers', 'Headers Three:', ['class' => 'col-lg-8 control-label'])!!}
+                                                  {!! Form::label('headers', 'Headers Four:', ['class' => 'col-lg-8 control-label'])!!}
                                                   <div class="col-lg-12">
                                                     {!!Form::text('title', '', ['class' => 'form-control', 'placeholder' => 'Title'])!!}
                                                   </div>
                                               </div>
                                               </div>
                                           </div>
+
                                         </div>
                                           <div class="col-md-6">
                                               <fieldset disabled>
@@ -174,6 +189,14 @@
                                               <div class="row" style="margin-top:32px;">
                                                   <div class="col">
                                                        <input type="text" name="" value="{{$post->headerTwo->test_header_2}}" placeholder="Header2" disabled>
+                                                  </div>
+                                              </div>
+                                          </div>
+
+                                          <div class="container mt-2">
+                                              <div class="row" style="margin-top:32px;">
+                                                  <div class="col">
+                                                       <input type="text" name="" value="{{$post->headerThree->test_header_3}}" placeholder="Header2" disabled>
                                                   </div>
                                               </div>
                                           </div>

@@ -15,148 +15,65 @@
                 <div class="card-body">
                     <div class="places-buttons">
                         <div class="row">
-                          {!! Form::open(['action' => 'TestController@store','method' => 'POST',]) !!}
-                        <div class="form-group">
-                           <!-- {!! Form::label('text', 'Quiz Name', ['class' => 'form-control'])!!} -->
-                           {!! Form::label('text', 'Test Name:', ['class' => 'col-lg-8 control-label'])!!}
-                           <div class="col-lg-12">
-                               {!! Form::text('testname', '', ['class' => 'form-control', 'placeholder' => 'Quiz Name']) !!}
-                           </div>
-                       </div>
-                       <div class="form-group">
-                           {!! Form::label('description', 'Description:', ['class' => 'col-lg-8 control-label'])!!}
-                           <div class="col-lg-12">
-                            {!! Form::textarea('description', '', ['class' => 'col-lg-2 control-label summernote','placeholder' => 'Description'])!!}
-                           </div>
-                       </div>
-                       <div class="form-group">
-                          {!! Form::label('startdate', 'Start Date (Quiz can be attempted after this date. YYYY-MM-DD HH:ll:SS):', ['class' => 'col-lg-8 control-label'])!!}
-                           <div class="col-lg-12">
-                             <input type="enddate" id="birthdaytime" name="startdate" class= "form-control">
-                           </div>
-                       </div>
-                       <div class="form-group">
-                          {!! Form::label('enddate', 'End Date (Quiz can be attempted after this date. YYYY-MM-DD HH:ll:SS):', ['class' => 'col-lg-8 control-label'])!!}
-                           <div class="col-lg-12">
-                            <input type="enddate" id="birthdaytime" name="enddate" class= "form-control">
-                           </div>
-                       </div>
-                       <div class="form-group">
-                          {!! Form::label('duration', 'Duration (in min.):', ['class' => 'col-lg-8 control-label'])!!}
-                           <div class="col-lg-12">
-                           <input type="number" id="birthdaytime" name="duration" class= "form-control">
-                           </div>
-                       </div>
-                       <div class="form-group">
-                          {!! Form::label('allow_max_attept', 'Allow Maximum Attempt:', ['class' => 'col-lg-8 control-label'])!!}
-                           <div class="col-lg-12">
-                             {!! Form::text('allow_max','', ['class' => 'form-control', 'placeholder' => 'Allow Maximum Attempt']) !!}
-                           </div>
-                       </div>
-                       <div class="form-group">
-                          {!! Form::label('minpercentage', 'Minimum Percentage Required to Pass:', ['class' => 'col-lg-8 control-label'])!!}
-                           <div class="col-lg-12">
-                             {!! Form::text('min_percent', '', ['class' => 'form-control', 'placeholder' => 'Minimum Percentage Required to Pass']) !!}
-                           </div>
-                       </div>
-                       <div class="form-group">
-                          {!! Form::label('correctscore', 'Correct Score:', ['class' => 'col-lg-8 control-label'])!!}
-                           <div class="col-lg-12">
-                             {!! Form::text('correctScore', '', ['class' => 'form-control', 'placeholder' => 'Correct Score']) !!}
-                           </div>
-                       </div>
-                       <div class="form-group">
-                          {!! Form::label('incorrectscore', 'Incorrect Score:', ['class' => 'col-lg-8 control-label'])!!}
-                           <div class="col-lg-12">
-                             {!! Form::text('incorrect','', ['class' => 'form-control', 'placeholder' => 'Incorrect Score']) !!}
-                           </div>
-                       </div>
-                       <div class="form-group">
-                            {!! Form::label('radios', 'Allow to View Correct answer after Submitting Test:', ['class' => 'col-lg-8 control-label']) !!}
-                            <div class="col-lg-12">
-                                <div class="radio-inline">
-                                <input type="radio" id="administrator" name="radio" value="YES"> YES
-                                 <input type="radio" id="moderator" name="radio" value="NO"> NO
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                             {!! Form::label('radios', 'Test Group', ['class' => 'col-lg-8 control-label']) !!}
-                             <div class="col-lg-12">
-                                  <div class="radio-inline">
-                                   @foreach($testgroup  as $id => $name)
-                                     <label> {!! Form::checkbox("testgroup[]", $name) !!} {{$name}} </label>
-                                   @endforeach
-                              </div>
-                             </div>
-                         </div>
-                         <div class="form-group">
-                            {!! Form::label('category', 'Test Category', ['class' => 'col-lg-8 control-label'])!!}
-                             <div class="col-lg-12">
-                               <select name="category" id="category" class="form-control">
-                                  @foreach($category as $id => $cat)
-                                      <option value="{{ $id }}">
-                                          {{ $cat }}
-                                      </option>
-                                  @endforeach
-                              </select>
-                               @if($errors->has('test_header_1_id'))
-                               <span class="help-block text-danger">{{$errors->first('test_header_1_id')}}</span>
-                               @endif
-                             </div>
-                         </div>
-                       <div class="form-group">
-                          {!! Form::label('headers', 'Headers One:', ['class' => 'col-lg-8 control-label'])!!}
-                           <div class="col-lg-12">
-                             <select name="country_id" id="country" class="form-control">
-                                @foreach($items as $id => $country)
-                                    <option value="{{ $id }}">
-                                        {{ $country }}
-                                    </option>
-                                @endforeach
-                            </select>
-                             @if($errors->has('test_header_1_id'))
-                             <span class="help-block text-danger">{{$errors->first('test_header_1_id')}}</span>
-                             @endif
-                           </div>
-                       </div>
 
-                       <div class="form-group">
-                          {!! Form::label('headers', 'Headers Two:', ['class' => 'col-lg-8 control-label'])!!}
-                           <div class="col-lg-12">
-                             <select name="city" id="country" class="form-control">
-                            </select>
-                             @if($errors->has('test_header_2_id'))
-                             <span class="help-block text-danger">{{$errors->first('test_header_1_id')}}</span>
-                             @endif
-                           </div>
-                       </div>
-                       <div class="form-group">
-                          {!! Form::label('headers', 'Headers Three:', ['class' => 'col-lg-8 control-label'])!!}
-                           <div class="col-lg-12">
-                             <select name="setting" id="country" class="form-control">
-                            </select>
-                             @if($errors->has('test_header_3_id'))
-                             <span class="help-block text-danger">{{$errors->first('test_header_3_id')}}</span>
-                             @endif
-                           </div>
-                       </div>
-                       <div class="form-group">
-                          {!! Form::label('headers', 'Headers Four:', ['class' => 'col-lg-8 control-label'])!!}
-                           <div class="col-lg-12">
-                             <select name="four" id="four" class="form-control">
-                            </select>
-                             @if($errors->has('test_header_3_id'))
-                             <span class="help-block text-danger">{{$errors->first('test_header_3_id')}}</span>
-                             @endif
-                           </div>
-                       </div>
-                       <div class="form-group">
-                             <div class="col-lg-4">
-                                 {!! Form::submit('Submit', ['class' => 'btn btn-lg btn-info pull-right'] ) !!}
-                             </div>
-                         </div>
-                           {!!Form::close()!!}
+                          <div class="container" style="margin-top: 10px;">
+		<div class="row">
+			<div class="col-md-4">
+				<form action="{{ url('multiple-insert') }}" enctype="multipart/form-data">
+				{!! csrf_field() !!}
+			<table class="table table-bordered">
+					<thead>
+						<tr>
+
+							<th>#</th>
+
+							<th>S.N</th>
+							<th>Name</th>
+						</tr>
+					</thead>
+					<tbody>
+						@foreach($gift as $testdet)
+						<tr>
+							<td><input type="radio" name="student_id" value="{{$testdet->test_id}}"></td>
+							<td>{{$testdet->test_id}}</td>
+							<td>{{$testdet->test_name}}</td>
+						</tr>
+						@endforeach
+					</tbody>
+				</table>
+			</div>
+			<div class="col-md-4">
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<td></td>
+							<th>S.N</th>
+							<th>Subjects</th>
+						</tr>
+					</thead>
+					<tbody>
+
+						@foreach($posts as $subject)
+						<tr>
+							<td><input type="checkbox" name="subject_id[]" value="{{$subject->question_id}}"></td>
+							<td>{{$subject->question_id}}</td>
+							<td>{{$subject->question}}</td>
+						</tr>
+
+						@endforeach
+					</tbody>
+				</table>
+				<div class="form-group">
+					<button class="btn btn-primary btn-sm">
+						Insert
+					</button>
+				</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
                     </div>
                 </div>
             </div>

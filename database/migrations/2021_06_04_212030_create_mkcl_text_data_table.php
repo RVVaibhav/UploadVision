@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateVisionMnemonicsTable extends Migration
+class CreateMkclTextDataTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class CreateVisionMnemonicsTable extends Migration
      */
     public function up()
     {
-        Schema::create('vision_mnemonics', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+        Schema::create('mkcl_text_data', function (Blueprint $table) {
+          $table->increments('id');
+          $table->string('title');
+          $table->string('description');
+          $table->string('createdBy');
+          $table->timestamps();
         });
     }
 
@@ -26,6 +29,6 @@ class CreateVisionMnemonicsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vision_mnemonics');
+        Schema::dropIfExists('mkcl_text_data');
     }
 }

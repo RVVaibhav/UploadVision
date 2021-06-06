@@ -33,17 +33,23 @@ Route::middleware('auth')->group(function() {
     Route::resource('headers', 'HeadersController');
     Route::resource('vedio', 'VedioAddController');
     Route::resource('quiz', 'QuizController');
+    Route::resource('ambiguity', 'AmbiguityController');
     Route::resource('mnemonics', 'MnemonicsController');
     Route::resource('testQuiz', 'TestQuestionController');
     Route::resource('category', 'CategoriesController');
     Route::resource('reading', 'ReadingStuffController');
     Route::resource('study', 'StudyTipsController');
+    Route::resource('mkcl', 'MkclController');
     Route::resource('datauploads', 'DataUploadsController');
+    Route::resource('notification', 'NotificationCOntroller');
     Route::resource('users', 'UserController');
     Route::resource('questionformat', 'QuestionFormatController');
     Route::post('/stores', 'UserController@stores')->name('stores');
     Route::put('edit/{id}', 'UserController@updateStudent');
     Route::delete('users/{id}', 'UserController@destroy');
+
+
+   Route::post('/ambiguity/addAnswer/{id}', 'AmbiguityController@editCallRate');
 
 
 
@@ -56,6 +62,16 @@ Route::middleware('auth')->group(function() {
     Route::post('test-upload', 'DataUploadsController@testUploadPost')->name('test.upload.post');
     Route::get('show', 'DataUploadsController@show');
     Route::get('word-export', 'DataUploadsController@wordExport');
+
+    Route::get('multiple-insert','TestController@multipleInsert');
+
+  //  Route::get('vault/{userId}/candidates/{candidateId}', 'TestController@centreCandidatesShow');
+
+    Route::get('vault/{question_id}/candidates/{test_id}', [
+    'as' => 'candidates.show',
+    'uses' => 'TestController@centreCandidatesShow'
+]);
+
 
 
 

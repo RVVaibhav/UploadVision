@@ -32,10 +32,10 @@ include("Config.php");
 
 
                    $huntygo['ht'][] = array('stk' => 'success','test_category'=>$test_category,'test_group'=>$test_group,'min_percent'=>$min_percent,'test_id' =>$test_id,'test_header_3_id'=>$test_header_3_id,
-                  'test_header_1_id' =>$test_header_1_id,'test_header_2_id'=>$test_header_2_id,'num_questions' =>$num_questions,'total_marks' =>$total_marks,
-                  'test_header_4_id' =>$test_header_4_id,'test_name'=>$test_name,'description' =>$description,'duration'=>$duration,
-                  'start_date' =>$start_date,'expire_date'=>$expire_date,'attempt_limit' =>$attempt_limit,'incorrect_score'=>$incorrect_score,
-                  'correct_score' =>$correct_score,'is_view_correct_answers_allowed' =>$is_view_correct_answers_allowed,'created_at' =>$created_at,'updated_at' =>$updated_at,'admin_id' =>$admin_id);
+            'test_header_1_id' =>$test_header_1_id,'test_header_2_id'=>$test_header_2_id,'num_questions' =>$num_questions,'total_marks' =>$total_marks,
+            'test_header_4_id' =>$test_header_4_id,'test_name'=>$test_name,'description' =>$description,'duration'=>$duration,
+            'start_date' =>$start_date,'expire_date'=>$expire_date,'attempt_limit' =>$attempt_limit,'incorrect_score'=>$incorrect_score,
+            'correct_score' =>$correct_score,'is_view_correct_answers_allowed' =>$is_view_correct_answers_allowed,'created_at' =>$created_at,'updated_at' =>$updated_at,'admin_id' =>$admin_id);
             }
         }
 	   else{

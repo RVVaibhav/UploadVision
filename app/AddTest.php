@@ -15,7 +15,6 @@ class AddTest extends Model{
     * @var array
     */
    protected $fillable = [
-
        'test_header_3_id','test_header_1_id','test_header_2_id','test_header_4_id',
        'test_category','test_group','test_name','description','duration','start_date',
        'expire_date','attempt_limit','total_marks','num_questions','correct_score','min_percent',
