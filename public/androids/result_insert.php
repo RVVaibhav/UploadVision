@@ -17,7 +17,6 @@ date_default_timezone_set('Asia/Kolkata');
         $result_insert=$con->insertResult('result_test_questions',$fields,$values);
       //	echo $result_insert  ; //exit;
     if($result_insert){
-
      $result=$con->getResultData($user_id,$test_id);
      $cnt=mysqli_num_rows($result);
     if($cnt > 0){

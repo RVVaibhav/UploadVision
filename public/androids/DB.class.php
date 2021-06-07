@@ -75,9 +75,9 @@ class DB {
     }
 }
 
-public function selectHeaders($table,$test_header_1_id,$test_header_2_id) {
+public function selectHeaders($table,$test_header_1_id,$test_header_2_id,$test_header_3_id) {
 try {
-     $sql ="SELECT * FROM $table WHERE `test_header_1_id`='$test_header_1_id' AND `test_header_2_id`='$test_header_2_id'";
+     $sql ="SELECT * FROM $table WHERE `test_header_1_id`='$test_header_1_id' AND `test_header_2_id`='$test_header_2_id'AND `test_header_3_id`='$test_header_3_id'";
      //echo $sql;
   //  exit;
     $result = mysqli_query($this->connection, $sql);
@@ -90,9 +90,42 @@ catch (Exception $Ex) {
 }
 }
 
+
+
 public function selectStudyTipsData($table) {
 try {
      $sql ="SELECT * FROM $table";
+     //echo $sql;
+  //  exit;
+    $result = mysqli_query($this->connection, $sql);
+    //var_dump($result);
+   // exit;
+    return $result;
+}
+catch (Exception $Ex) {
+    echo $Ex;
+}
+}
+
+public function selectMkclData($table) {
+try {
+     $sql ="SELECT * FROM $table";
+     //echo $sql;
+  //  exit;
+    $result = mysqli_query($this->connection, $sql);
+    //var_dump($result);
+   // exit;
+    return $result;
+}
+catch (Exception $Ex) {
+    echo $Ex;
+}
+}
+
+
+public function selectMkclDatas($table,$type) {
+try {
+     $sql ="SELECT * FROM $table where type='$type'";
      //echo $sql;
   //  exit;
     $result = mysqli_query($this->connection, $sql);
@@ -206,6 +239,23 @@ public function getResultData($user_id,$test_id) {
 try {
      $sql ="select * from result_test_questions where `user_id`='$user_id' and `test_id` = '$test_id';";
 //    echo $sql;
+  //  exit;
+    $result = mysqli_query($this->connection, $sql);
+    //var_dump($result);
+   // exit;
+    return $result;
+}
+catch (Exception $Ex) {
+    echo $Ex;
+}
+}
+
+
+
+public function selectSubTPlanDatas($table,$type) {
+try {
+     $sql ="SELECT * FROM $table where subsription='$type'";
+     //echo $sql;
   //  exit;
     $result = mysqli_query($this->connection, $sql);
     //var_dump($result);
@@ -389,13 +439,31 @@ public function selectBystatus($table) {
                echo $Ex;
            }
         }
+  
 
-  public function selectTestList($table) {
+public function selectAmbiguity($table,$userId) {
 
             //$f= Where $f='$v'
             try {
-               $sql = "select * from $table";
-               echo $sql;
+               $sql = "select (select count(qrt2.report_id)as myreport from question_report_table qrt2) as report, (select count(qrt2.report_id)as myreport from question_report_table qrt2 where `user_id`= '$userId') as myReport, r.report_id,r.user_id,r.test_id,r.adminId,r.questionId,r.question_Comment,r.reference, q.question,option_1,option_2,option_3,option_4,correct_option,admin_id,r.created_at,r.updated_at, rs.solution_id, rs.report_id as rep,solution,rs.reference as ref,createdBy,rs.adminId as adm from $table r 
+INNER JOIN question_bank  q ON (r.questionId = q.question_id) left JOIN report_solutions rs on (r.report_id = rs.report_id)";
+              //echo $sql;
+              //exit;
+                $result = mysqli_query($this->connection, $sql);
+               return $result;
+           }
+           catch (Exception $Ex) {
+               echo $Ex;
+           }
+        }
+
+
+ public function selectTestSolvedList($table,$user_id) {
+
+            //$f= Where $f='$v'
+            try {
+               $sql = "select test.*, res.user_id from $table  as test INNER JOIN result_details as res on (test.test_id = res.test_id and `user_id` = '$user_id')";
+             // echo $sql;
                //exit;
                 $result = mysqli_query($this->connection, $sql);
                return $result;
@@ -407,12 +475,86 @@ public function selectBystatus($table) {
 
 
 
-        public function selectDataTestBySub($table,$cat_id) {
+public function selectTestUnSolvedList($table,$user_id) {
 
-                  //$f= Where $f='$v'
+            //$f= Where $f='$v'
+            try {
+               $sql = "select test.*, res.user_id from $table  as test Left JOIN result_details as res on (test.test_id = res.test_id and `user_id` = '$user_id') where res.user_id is null";
+             // echo $sql;
+               //exit;
+                $result = mysqli_query($this->connection, $sql);
+               return $result;
+           }
+           catch (Exception $Ex) {
+               echo $Ex;
+           }
+        }
+
+
+
+public function selectAmbigutyTestList($table,$user_id,$test_id) {
+
+            //$f= Where $f='$v'
+            try {
+               $sql = "select r.result_id,r.user_id,r.selected_option,r.question_id,r.test_id,q.question,option_1,option_2,option_3,option_4,correct_option,admin_id from $table r INNER JOIN question_bank  q ON (r.question_id = q.question_id)  where r.test_id = '$test_id' and r.user_id = '$user_id'";
+             // echo $sql;
+               //exit;
+                $result = mysqli_query($this->connection, $sql);
+               return $result;
+           }
+           catch (Exception $Ex) {
+               echo $Ex;
+           }
+        }
+
+
+
+  public function selectTestList($table,$user_id) {
+
+            //$f= Where $f='$v'
+            try {
+               $sql = "select test.*, res.user_id from $table  as test Left join result_details as res on (test.test_id = res.test_id and `user_id` = '$user_id')";
+             // echo $sql;
+               //exit;
+                $result = mysqli_query($this->connection, $sql);
+               return $result;
+           }
+           catch (Exception $Ex) {
+               echo $Ex;
+           }
+        }
+
+   public function getResultDetails($user_id,$test_id) {
+
+            //$f= Where $f='$v'
+            try {
+               $sql = "select * from (SELECT p.*, @curRank := @curRank + 1 AS rank
+			FROM result_details p, (
+			SELECT @curRank := 0
+			) q
+ORDER BY total_score DESC) as r where `user_id`='$user_id' and `test_id` = '$test_id'";
+              // echo $sql;
+               //exit;
+                $result = mysqli_query($this->connection, $sql);
+               return $result;
+           }
+           catch (Exception $Ex) {
+               echo $Ex;
+           }
+        }
+
+
+
+
+
+        public function selectDataTestBySub($table,$cat_id,$user_id) {
+
+                  //$f= Where $f='$v' 
+ 
                   try {
-                     $sql = "select * from $table where `test_header_4_id` ='$cat_id'";
-                    // echo $sql;
+                  //   $sql = "select * from $table as test where `test_header_4_id` ='$cat_id' and not exits(select null from result_details where `user_id` = '$user_id' and test.test_id = result_details.test_id)";
+                       $sql = "select test.*, res.user_id from $table  as test Left join result_details as res on (test.test_id = res.test_id and `user_id` = '$user_id') where `test_header_4_id` ='$cat_id'";
+                   //  echo $sql;
         //(select question_id from loot_cutieadmin.questions_in_test where test_id ='$test_id')
                     // exit;
                       $result = mysqli_query($this->connection, $sql);

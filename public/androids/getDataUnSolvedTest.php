@@ -5,7 +5,7 @@ include("Config.php");
 
 $user_id=$_POST['user_id'];
 
-  $result=$con->selectTestList("test_details",$user_id);
+  $result=$con->selectTestUnSolvedList("test_details",$user_id);
         if($result==true){
         	     while($row=$result->fetch_assoc()){
                 $test_id=$row['test_id'];

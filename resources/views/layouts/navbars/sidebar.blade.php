@@ -137,6 +137,12 @@
           <p>{{ __('Subscribe') }}</p>
         </a>
       </li>
+      <li class = "@if ($activePage == 'notes') active @endif">
+        <a href="{{ url('/notes') }}">
+          <i class="now-ui-icons text_caps-small"></i>
+          <p>{{ __('Notes Purches') }}</p>
+        </a>
+      </li>
       <li class = "@if ($activePage == 'vedio') active @endif">
         <a href="{{ url('/vedio') }}">
           <i class="now-ui-icons text_caps-small"></i>

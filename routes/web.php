@@ -44,6 +44,7 @@ Route::middleware('auth')->group(function() {
     Route::resource('notification', 'NotificationCOntroller');
     Route::resource('users', 'UserController');
     Route::resource('questionformat', 'QuestionFormatController');
+    Route::resource('notes', 'NotesPurcheseController');
     Route::post('/stores', 'UserController@stores')->name('stores');
     Route::put('edit/{id}', 'UserController@updateStudent');
     Route::delete('users/{id}', 'UserController@destroy');
